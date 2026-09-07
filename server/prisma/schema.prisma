@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id            Int      @id @default(autoincrement())
+  name          String   @db.VarChar(100)
+  email         String   @unique @db.VarChar(191)
+  password_hash String   @db.VarChar(255)
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  @@map("admins")
+}
+
+model PortfolioProject {
+  id                Int              @id @default(autoincrement())
+  title             String           @db.VarChar(255)
+  slug              String           @unique @db.VarChar(191)
+  category          String           @db.VarChar(100)
+  short_description String           @db.Text
+  description       String           @db.Text
+  challenge         String?          @db.Text
+  solution          String?          @db.Text
+  services          String?          @db.Text
+  technologies      String?          @db.Text
+  project_url       String?          @db.VarChar(255)
+  featured          Boolean          @default(false)
+  published         Boolean          @default(true)
+  created_at        DateTime         @default(now())
+  updated_at        DateTime         @updatedAt
+  images            PortfolioImage[]
+
+  @@index([category])
+  @@index([published])
+  @@index([featured])
+  @@index([created_at])
+  @@map("portfolio_projects")
+}
+
+model PortfolioImage {
+  id         Int              @id @default(autoincrement())
+  project_id Int
+  image_url  String           @db.VarChar(500)
+  image_type String           @default("screenshot") @db.VarChar(50)
+  sort_order Int              @default(0)
+  created_at DateTime         @default(now())
+  project    PortfolioProject @relation(fields: [project_id], references: [id], onDelete: Cascade)
+
+  @@index([project_id])
+  @@index([sort_order])
+  @@map("portfolio_images")
+}
+
+model Enquiry {
+  id              Int      @id @default(autoincrement())
+  full_name       String   @db.VarChar(150)
+  email           String   @db.VarChar(191)
+  phone           String   @db.VarChar(50)
+  city            String?  @db.VarChar(100)
+  company_name    String?  @db.VarChar(150)
+  service         String   @db.VarChar(100)
+  budget          String?  @db.VarChar(100)
+  project_details String   @db.Text
+  status          String   @default("New") @db.VarChar(50)
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  @@index([status])
+  @@index([created_at])
+  @@map("enquiries")
+}
