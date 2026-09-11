@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MessageSquare, CheckCircle2, Code2, TrendingUp, Smartphone, Search } from 'lucide-react';
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { ArrowRight, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useModal } from '../../context/ModalContext';
 import MagneticButton from '../common/MagneticButton';
 
@@ -10,16 +10,6 @@ const headlineWords = ['Future.', 'Market.', 'Industry.'];
 const Hero = () => {
   const { openEnquiryModal } = useModal();
   const [wordIndex, setWordIndex] = useState(0);
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  // Check prefers-reduced-motion
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
-    const listener = (e) => setPrefersReducedMotion(e.matches);
-    mediaQuery.addEventListener('change', listener);
-    return () => mediaQuery.removeEventListener('change', listener);
-  }, []);
 
   // Rotating word timer
   useEffect(() => {
@@ -29,192 +19,12 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
-  // Mouse parallax motion values for ambient mesh gradient interaction
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const parallaxX = useSpring(mouseX, { stiffness: 40, damping: 20 });
-  const parallaxY = useSpring(mouseY, { stiffness: 40, damping: 20 });
-
-  const handleMouseMove = (e) => {
-    if (prefersReducedMotion) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) * 0.04;
-    const y = (e.clientY - rect.top - rect.height / 2) * 0.04;
-    mouseX.set(x);
-    mouseY.set(y);
-  };
-
   const whatsappUrl =
     'https://wa.me/917400881232?text=' +
     encodeURIComponent('Hello EverPeak Solutions, I would like to discuss a project with your team.');
 
   return (
-    <section
-      onMouseMove={handleMouseMove}
-      className="relative min-h-screen flex flex-col justify-center items-center pt-24 pb-10 sm:pt-28 sm:pb-14 overflow-hidden bg-brand-black"
-    >
-      {/* Background subtle grid pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
-
-      {/* Stripe-style continuously animated mesh gradient background */}
-      <motion.div
-        style={prefersReducedMotion ? undefined : { x: parallaxX, y: parallaxY }}
-        className="absolute inset-0 overflow-hidden pointer-events-none z-0"
-      >
-        {/* Blob 1: Brand Purple */}
-        <motion.div
-          animate={
-            prefersReducedMotion
-              ? { opacity: 0.14 }
-              : {
-                  x: [0, 50, -40, 20, 0],
-                  y: [0, -40, 30, -20, 0],
-                  scale: [1, 1.15, 0.95, 1.08, 1],
-                  opacity: [0.12, 0.18, 0.14, 0.20, 0.12],
-                }
-          }
-          transition={{
-            duration: 16,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-          className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[420px] bg-brand-purple rounded-full blur-[140px]"
-        />
-
-        {/* Blob 2: Brand Magenta */}
-        <motion.div
-          animate={
-            prefersReducedMotion
-              ? { opacity: 0.12 }
-              : {
-                  x: [0, -60, 30, -40, 0],
-                  y: [0, 45, -30, 25, 0],
-                  scale: [1, 0.92, 1.18, 0.96, 1],
-                  opacity: [0.10, 0.16, 0.12, 0.18, 0.10],
-                }
-          }
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1,
-          }}
-          className="absolute top-1/3 right-10 w-[550px] h-[380px] bg-brand-magenta rounded-full blur-[130px]"
-        />
-
-        {/* Blob 3: Brand Violet */}
-        <motion.div
-          animate={
-            prefersReducedMotion
-              ? { opacity: 0.14 }
-              : {
-                  x: [0, 45, -55, 30, 0],
-                  y: [0, -35, 40, -15, 0],
-                  scale: [0.95, 1.12, 0.9, 1.15, 0.95],
-                  opacity: [0.12, 0.19, 0.10, 0.17, 0.12],
-                }
-          }
-          transition={{
-            duration: 14,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
-          }}
-          className="absolute bottom-10 left-1/3 -translate-x-1/2 w-[600px] h-[400px] bg-brand-violet rounded-full blur-[140px]"
-        />
-
-        {/* Blob 4: Brand Pink */}
-        <motion.div
-          animate={
-            prefersReducedMotion
-              ? { opacity: 0.10 }
-              : {
-                  x: [0, -35, 50, -25, 0],
-                  y: [0, 35, -45, 20, 0],
-                  scale: [1, 1.16, 0.94, 1.1, 1],
-                  opacity: [0.08, 0.15, 0.11, 0.16, 0.08],
-                }
-          }
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 3,
-          }}
-          className="absolute bottom-20 right-1/4 w-[500px] h-[350px] bg-brand-pink rounded-full blur-[120px]"
-        />
-      </motion.div>
-
-      {/* Floating Tech & Marketing Chips */}
-      {/* Chip 1: Top Left */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
-        transition={{
-          opacity: { duration: 0.8, delay: 0.3 },
-          scale: { duration: 0.8, delay: 0.3 },
-          y: { duration: 4.2, repeat: Infinity, ease: 'easeInOut' },
-        }}
-        className="absolute top-[20%] left-4 xl:left-12 hidden lg:flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-brand-dark-gray/80 border border-brand-border/80 shadow-xl backdrop-blur-md text-xs font-semibold text-brand-offwhite pointer-events-none z-10"
-      >
-        <div className="w-6 h-6 rounded-lg bg-brand-purple/20 flex items-center justify-center text-brand-magenta">
-          <Code2 className="w-3.5 h-3.5" />
-        </div>
-        <span>Full-Stack Web</span>
-      </motion.div>
-
-      {/* Chip 2: Top Right */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
-        transition={{
-          opacity: { duration: 0.8, delay: 0.45 },
-          scale: { duration: 0.8, delay: 0.45 },
-          y: { duration: 5.1, repeat: Infinity, ease: 'easeInOut', delay: 1 },
-        }}
-        className="absolute top-[18%] right-4 xl:right-12 hidden lg:flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-brand-dark-gray/80 border border-brand-border/80 shadow-xl backdrop-blur-md text-xs font-semibold text-brand-offwhite pointer-events-none z-10"
-      >
-        <div className="w-6 h-6 rounded-lg bg-brand-magenta/20 flex items-center justify-center text-brand-magenta">
-          <TrendingUp className="w-3.5 h-3.5" />
-        </div>
-        <span>High-ROI Ads</span>
-      </motion.div>
-
-      {/* Chip 3: Bottom Left */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1, y: [0, -7, 0] }}
-        transition={{
-          opacity: { duration: 0.8, delay: 0.6 },
-          scale: { duration: 0.8, delay: 0.6 },
-          y: { duration: 4.6, repeat: Infinity, ease: 'easeInOut', delay: 0.6 },
-        }}
-        className="absolute bottom-[20%] left-6 xl:left-14 hidden lg:flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-brand-dark-gray/80 border border-brand-border/80 shadow-xl backdrop-blur-md text-xs font-semibold text-brand-offwhite pointer-events-none z-10"
-      >
-        <div className="w-6 h-6 rounded-lg bg-brand-violet/20 flex items-center justify-center text-brand-violet">
-          <Smartphone className="w-3.5 h-3.5" />
-        </div>
-        <span>Mobile Apps</span>
-      </motion.div>
-
-      {/* Chip 4: Bottom Right */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1, y: [0, -9, 0] }}
-        transition={{
-          opacity: { duration: 0.8, delay: 0.75 },
-          scale: { duration: 0.8, delay: 0.75 },
-          y: { duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 1.6 },
-        }}
-        className="absolute bottom-[20%] right-6 xl:right-14 hidden lg:flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-brand-dark-gray/80 border border-brand-border/80 shadow-xl backdrop-blur-md text-xs font-semibold text-brand-offwhite pointer-events-none z-10"
-      >
-        <div className="w-6 h-6 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
-          <Search className="w-3.5 h-3.5" />
-        </div>
-        <span>SEO & Growth</span>
-      </motion.div>
-
+    <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 pb-10 sm:pt-28 sm:pb-14 overflow-hidden bg-brand-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto flex flex-col justify-center items-center">
         {/* Centered Hero Content */}
         <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-5 md:space-y-6">
