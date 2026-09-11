@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, CheckCircle, AlertCircle, Loader2, Send, MessageSquare, Sparkles } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useModal } from '../../context/ModalContext';
 import api from '../../services/api';
 
@@ -77,8 +78,6 @@ const EnquiryModal = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, closeEnquiryModal]);
 
-  if (!isOpen) return null;
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -127,25 +126,38 @@ const EnquiryModal = () => {
     encodeURIComponent('Hello EverPeak Solutions, I would like to discuss a project with your team.');
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-md animate-fade-in">
-      {/* Modal Container */}
-      <div
-        className="relative w-full max-w-2xl bg-brand-dark-gray border border-brand-border rounded-2xl shadow-2xl shadow-purple-950/30 overflow-hidden my-8"
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Top Accent Gradient Bar */}
-        <div className="h-1.5 w-full bg-gradient-everpeak" />
-
-        {/* Close Button */}
-        <button
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
           onClick={closeEnquiryModal}
-          className="absolute top-5 right-5 p-2 rounded-full text-brand-muted hover:text-white bg-white/5 hover:bg-white/10 transition-colors focus:outline-none"
-          aria-label="Close modal"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/80 backdrop-blur-md"
         >
-          <X className="w-5 h-5" />
-        </button>
+          {/* Modal Container */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 15 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-2xl bg-brand-dark-gray border border-brand-border rounded-2xl shadow-2xl shadow-purple-950/30 overflow-hidden my-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Top Accent Gradient Bar */}
+            <div className="h-1.5 w-full bg-gradient-everpeak" />
 
-        <div className="p-6 sm:p-8 max-h-[85vh] overflow-y-auto">
+            {/* Close Button */}
+            <button
+              onClick={closeEnquiryModal}
+              className="absolute top-5 right-5 p-2 rounded-full text-brand-muted hover:text-white bg-white/5 hover:bg-white/10 transition-colors focus:outline-none"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="p-6 sm:p-8 max-h-[85vh] overflow-y-auto">
           {status.success ? (
             <div className="py-12 px-4 text-center space-y-5 animate-fade-in">
               <div className="w-16 h-16 mx-auto rounded-full bg-brand-purple/20 border border-brand-magenta/40 flex items-center justify-center text-brand-magenta">
@@ -375,8 +387,10 @@ const EnquiryModal = () => {
             </>
           )}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
   );
 };
 

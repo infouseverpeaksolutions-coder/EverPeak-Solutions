@@ -10,7 +10,7 @@
   body {
     background-color: #000000;
     color: #F5F5F7;
-    font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
   }
 
@@ -76,119 +76,142 @@
   }
 
   /* ===================================================
-     3D MATTE FINISH BUTTON SYSTEM
+     FLAT MATTE FINISH BUTTON SYSTEM
      =================================================== */
 
-  /* 3D Matte Primary (EverPeak Purple/Magenta Brand) */
+  /* Flat Matte Primary (EverPeak Purple/Magenta Brand) */
   .btn-3d-matte-primary {
-    background: linear-gradient(180deg, #8A00FF 0%, #6D00FF 100%);
-    box-shadow: 
-      0 1px 0 rgba(255, 255, 255, 0.28) inset,
-      0 -2px 0 rgba(0, 0, 0, 0.35) inset,
-      0 3px 0 #4a00b0,
-      0 6px 18px rgba(109, 0, 255, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg, #6D00FF 0%, #8A00FF 50%, #D000FF 100%);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 0 15px -3px rgba(109, 0, 255, 0.25);
+    transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     user-select: none;
   }
   .btn-3d-matte-primary:hover {
-    background: linear-gradient(180deg, #9B1CFF 0%, #7E1CFF 100%);
-    box-shadow: 
-      0 1px 0 rgba(255, 255, 255, 0.38) inset,
-      0 -2px 0 rgba(0, 0, 0, 0.35) inset,
-      0 4px 0 #4a00b0,
-      0 8px 22px rgba(208, 0, 255, 0.45);
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #7E1CFF 0%, #9B1CFF 50%, #E01CFF 100%);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 25px -4px rgba(208, 0, 255, 0.45);
+    opacity: 0.96;
   }
   .btn-3d-matte-primary:active {
-    box-shadow: 
-      0 1px 0 rgba(255, 255, 255, 0.15) inset,
-      0 1px 0 #4a00b0,
-      0 2px 6px rgba(109, 0, 255, 0.3);
-    transform: translateY(2px);
+    opacity: 0.9;
   }
 
-  /* 3D Matte Secondary (Dark Graphite / Charcoal) */
+  /* Flat Matte Secondary (Dark Charcoal / Graphite) */
   .btn-3d-matte-secondary {
-    background: linear-gradient(180deg, #1C1C23 0%, #121217 100%);
-    box-shadow: 
-      0 1px 0 rgba(255, 255, 255, 0.14) inset,
-      0 -2px 0 rgba(0, 0, 0, 0.5) inset,
-      0 3px 0 #060608,
-      0 5px 14px rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #121217;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     user-select: none;
   }
   .btn-3d-matte-secondary:hover {
-    background: linear-gradient(180deg, #24242E 0%, #17171E 100%);
-    border-color: rgba(255, 255, 255, 0.16);
-    box-shadow: 
-      0 1px 0 rgba(255, 255, 255, 0.2) inset,
-      0 -2px 0 rgba(0, 0, 0, 0.5) inset,
-      0 3px 0 #060608,
-      0 7px 18px rgba(0, 0, 0, 0.65);
-    transform: translateY(-1px);
+    background: #1C1C24;
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #FFFFFF;
   }
   .btn-3d-matte-secondary:active {
-    box-shadow: 
-      0 1px 0 rgba(255, 255, 255, 0.08) inset,
-      0 1px 0 #060608,
-      0 2px 5px rgba(0, 0, 0, 0.5);
-    transform: translateY(2px);
+    background: #16161D;
   }
 
-  /* 3D Matte WhatsApp (Green Tactile) */
+  /* Flat Matte WhatsApp (Green Clean) */
   .btn-3d-matte-whatsapp {
-    background: linear-gradient(180deg, #25D366 0%, #1ba851 100%);
-    box-shadow: 
-      0 1px 0 rgba(255, 255, 255, 0.35) inset,
-      0 -2px 0 rgba(0, 0, 0, 0.3) inset,
-      0 3px 0 #126e34,
-      0 6px 16px rgba(37, 211, 102, 0.35);
+    background: #25D366;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 14px -3px rgba(37, 211, 102, 0.25);
+    transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
     position: relative;
     user-select: none;
   }
   .btn-3d-matte-whatsapp:hover {
-    background: linear-gradient(180deg, #2ee06e 0%, #20bd5a 100%);
-    box-shadow: 
-      0 1px 0 rgba(255, 255, 255, 0.45) inset,
-      0 -2px 0 rgba(0, 0, 0, 0.3) inset,
-      0 3px 0 #126e34,
-      0 8px 20px rgba(37, 211, 102, 0.45);
-    transform: translateY(-1px);
+    background: #20BD5A;
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 0 20px -3px rgba(37, 211, 102, 0.4);
   }
   .btn-3d-matte-whatsapp:active {
-    box-shadow: 
-      0 1px 0 rgba(255, 255, 255, 0.2) inset,
-      0 1px 0 #126e34,
-      0 2px 5px rgba(37, 211, 102, 0.3);
-    transform: translateY(2px);
+    background: #1CA84F;
   }
 
-  /* 3D Matte Card/Mini Action Button */
+  /* Flat Matte Mini / Card Action */
   .btn-3d-matte-mini {
-    background: linear-gradient(180deg, #181820 0%, #0E0E12 100%);
-    box-shadow: 
-      0 1px 0 rgba(255, 255, 255, 0.1) inset,
-      0 -1px 0 rgba(0, 0, 0, 0.4) inset,
-      0 2px 0 #050507,
-      0 3px 8px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    transition: all 0.12s ease;
+    background: #121217;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    user-select: none;
   }
   .btn-3d-matte-mini:hover {
-    background: linear-gradient(180deg, #20202A 0%, #14141A 100%);
-    border-color: rgba(255, 255, 255, 0.14);
-    transform: translateY(-1px);
+    background: #1C1C24;
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
   }
   .btn-3d-matte-mini:active {
-    transform: translateY(1px);
-    box-shadow: 0 1px 0 #050507;
+    background: #16161D;
+  }
+
+  /* ===================================================
+     ROTATING CONIC GRADIENT BORDER CARDS
+     =================================================== */
+  .card-glow-interactive {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  }
+
+  .card-glow-interactive::before {
+    content: '';
+    position: absolute;
+    top: -60%;
+    left: -60%;
+    width: 220%;
+    height: 220%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      #6D00FF 60deg,
+      #D000FF 120deg,
+      #F000D0 180deg,
+      transparent 240deg
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: rotate-conic-glow 4s linear infinite;
+    pointer-events: none;
+  }
+
+  .card-glow-interactive:hover::before {
+    opacity: 1;
+  }
+
+  .card-glow-interactive:hover {
+    box-shadow: 0 12px 35px -10px rgba(109, 0, 255, 0.35);
+  }
+
+  .card-glow-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: calc(1rem - 1px);
+    background: #111114;
+    transition: background-color 0.3s ease;
+  }
+
+  .card-glow-interactive:hover .card-glow-inner {
+    background: #15151A;
+  }
+}
+
+@keyframes rotate-conic-glow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 

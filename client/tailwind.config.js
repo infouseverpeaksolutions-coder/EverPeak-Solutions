@@ -23,8 +23,8 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['Quicksand', 'sans-serif'],
-        sans: ['Quicksand', 'sans-serif'],
+        heading: ['Space Grotesk', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       backgroundImage: {

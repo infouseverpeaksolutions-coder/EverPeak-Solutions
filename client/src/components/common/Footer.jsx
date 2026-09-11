@@ -27,7 +27,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-brand-near-black border-t border-brand-border relative overflow-hidden">
+    <footer className="bg-brand-near-black relative overflow-hidden">
       {/* Subtle background glow */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-brand-purple/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-10 w-96 h-96 bg-brand-magenta/5 rounded-full blur-3xl pointer-events-none" />
@@ -41,6 +41,7 @@ const Footer = () => {
                 src="/logo.png"
                 alt="EverPeak Solutions"
                 className="h-10 w-auto object-contain"
+                loading="lazy"
               />
             </Link>
             <p className="text-brand-muted text-sm leading-relaxed max-w-sm">

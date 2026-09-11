@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import {
   FolderKanban,
   MailCheck,
@@ -105,6 +106,10 @@ const AdminDashboard = () => {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
+      <Helmet>
+        <title>Admin Dashboard | EverPeak Solutions</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Top Header & Quick Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>

@@ -85,7 +85,7 @@ const DigitalMarketingSection = () => {
   const { openEnquiryModal } = useModal();
 
   return (
-    <section className="py-20 bg-brand-near-black relative overflow-hidden border-t border-brand-border">
+    <section className="py-20 bg-brand-near-black relative overflow-hidden">
       {/* Background Lighting */}
       <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-brand-magenta/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -122,48 +122,48 @@ const DigitalMarketingSection = () => {
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className={`p-6 rounded-xl border transition-colors duration-300 flex flex-col justify-between group shadow-lg ${
-                  isFeatured
-                    ? 'bg-brand-dark-gray border-brand-purple/40 shadow-glow-sm'
-                    : 'bg-brand-dark-gray/60 border-brand-border hover:border-brand-magenta/40 hover:bg-brand-card-hover'
+                className={`card-glow-interactive group shadow-lg ${
+                  isFeatured ? 'shadow-glow-sm' : ''
                 }`}
               >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-10 h-10 rounded-lg bg-white/5 border border-brand-border group-hover:border-brand-magenta/40 group-hover:bg-brand-purple/10 transition-all flex items-center justify-center text-brand-magenta">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <span className="text-[10px] font-mono text-brand-muted uppercase tracking-wider">
-                      {service.tagline}
-                    </span>
-                  </div>
-
-                  <h3 className="text-base sm:text-lg font-bold font-heading text-white mb-2.5 group-hover:text-brand-offwhite transition-colors">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-brand-muted text-xs sm:text-sm leading-relaxed mb-5">
-                    {service.description}
-                  </p>
-
-                  <div className="space-y-2 mb-6">
-                    {service.bullets.map((bullet, bIdx) => (
-                      <div key={bIdx} className="flex items-center space-x-2 text-xs text-brand-offwhite">
-                        <Check className="w-3.5 h-3.5 text-brand-violet shrink-0" />
-                        <span>{bullet}</span>
+                <div className="card-glow-inner p-6 flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-10 h-10 rounded-lg bg-white/5 border border-brand-border group-hover:border-brand-magenta/40 group-hover:bg-brand-purple/10 transition-all flex items-center justify-center text-brand-magenta">
+                        <Icon className="w-5 h-5" />
                       </div>
-                    ))}
-                  </div>
-                </div>
+                      <span className="text-[10px] font-mono text-brand-muted uppercase tracking-wider">
+                        {service.tagline}
+                      </span>
+                    </div>
 
-                <div className="pt-3 border-t border-white/5">
-                  <button
-                    onClick={() => openEnquiryModal(service.title)}
-                    className="btn-3d-matte-mini px-3.5 py-2 rounded-lg w-full inline-flex items-center justify-between text-[11px] font-semibold tracking-wider text-brand-offwhite group-hover:text-brand-magenta uppercase outline-none focus:outline-none"
-                  >
-                    <span>Scale Marketing</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-                  </button>
+                    <h3 className="text-base sm:text-lg font-bold font-heading text-white mb-2.5 group-hover:text-brand-offwhite transition-colors">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-brand-muted text-xs sm:text-sm leading-relaxed mb-5">
+                      {service.description}
+                    </p>
+
+                    <div className="space-y-2 mb-6">
+                      {service.bullets.map((bullet, bIdx) => (
+                        <div key={bIdx} className="flex items-center space-x-2 text-xs text-brand-offwhite">
+                          <Check className="w-3.5 h-3.5 text-brand-violet shrink-0" />
+                          <span>{bullet}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-3 border-t border-white/5 mt-auto">
+                    <button
+                      onClick={() => openEnquiryModal(service.title)}
+                      className="btn-3d-matte-mini px-3.5 py-2 rounded-lg w-full inline-flex items-center justify-between text-[11px] font-semibold tracking-wider text-brand-offwhite group-hover:text-brand-magenta uppercase outline-none focus:outline-none"
+                    >
+                      <span>Scale Marketing</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             );

@@ -61,7 +61,7 @@ const caseStudies = [
 
 const CaseStudies = () => {
   return (
-    <section className="py-20 bg-brand-near-black relative overflow-hidden border-t border-brand-border">
+    <section className="py-20 bg-brand-near-black relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
         <motion.div

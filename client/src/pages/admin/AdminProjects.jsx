@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import {
   Plus,
   Search,
@@ -102,6 +103,10 @@ const AdminProjects = () => {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
+      <Helmet>
+        <title>Portfolio Management | Admin | EverPeak Solutions</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>

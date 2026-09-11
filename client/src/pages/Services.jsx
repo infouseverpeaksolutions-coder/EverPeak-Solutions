@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
 import {
   Globe,
   Smartphone,
@@ -12,14 +14,34 @@ import {
   Megaphone,
   PenTool,
   Sparkles,
-  TrendingUp,
   CheckCircle2,
   ArrowRight,
-  Shield,
   Layers,
 } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
 import CTASection from '../components/home/CTASection';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 const techServices = [
   {
@@ -211,22 +233,36 @@ const Services = () => {
   const [activeFilter, setActiveFilter] = useState('ALL');
   const { openEnquiryModal } = useModal();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    document.title = 'Services | EverPeak Solutions IT & Digital Growth';
-  }, []);
-
   const displayedTech = activeFilter === 'ALL' || activeFilter === 'TECH' ? techServices : [];
   const displayedGrowth = activeFilter === 'ALL' || activeFilter === 'GROWTH' ? growthServices : [];
 
   return (
     <div className="bg-brand-black min-h-screen">
+      <Helmet>
+        <title>Services | EverPeak Solutions — IT & Digital Marketing</title>
+        <meta
+          name="description"
+          content="Explore EverPeak Solutions full-stack capabilities: custom web applications, mobile apps, software systems, SEO, and performance marketing."
+        />
+        <meta property="og:title" content="Services | EverPeak Solutions" />
+        <meta
+          property="og:description"
+          content="From technology to digital growth, we build powerful solutions that help your business stand out, scale faster, and go further."
+        />
+        <meta property="og:url" content="https://everpeaksolutions.in/services" />
+      </Helmet>
+
       {/* 1. Page Hero & Filter Toolbar */}
       <section className="relative pt-36 sm:pt-44 pb-16 bg-brand-black overflow-hidden">
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-brand-purple/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-5xl mx-auto space-y-5">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="text-center max-w-5xl mx-auto space-y-5"
+          >
             <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
               <Layers className="w-3.5 h-3.5" />
               <span>Full-Stack Capabilities</span>
@@ -247,7 +283,7 @@ const Services = () => {
             <div className="flex flex-wrap justify-center gap-2.5 pt-4 sm:pt-6">
               <button
                 onClick={() => setActiveFilter('ALL')}
-                className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider outline-none focus:outline-none ${
+                className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider outline-none focus:outline-none transition-all ${
                   activeFilter === 'ALL'
                     ? 'btn-3d-matte-primary text-white'
                     : 'btn-3d-matte-secondary text-brand-muted hover:text-white'
@@ -257,7 +293,7 @@ const Services = () => {
               </button>
               <button
                 onClick={() => setActiveFilter('TECH')}
-                className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider outline-none focus:outline-none ${
+                className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider outline-none focus:outline-none transition-all ${
                   activeFilter === 'TECH'
                     ? 'btn-3d-matte-primary text-white'
                     : 'btn-3d-matte-secondary text-brand-muted hover:text-white'
@@ -267,7 +303,7 @@ const Services = () => {
               </button>
               <button
                 onClick={() => setActiveFilter('GROWTH')}
-                className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider outline-none focus:outline-none ${
+                className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider outline-none focus:outline-none transition-all ${
                   activeFilter === 'GROWTH'
                     ? 'btn-3d-matte-primary text-white'
                     : 'btn-3d-matte-secondary text-brand-muted hover:text-white'
@@ -276,13 +312,13 @@ const Services = () => {
                 Digital Growth & Marketing
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* 2. Technology Services Section */}
       {displayedTech.length > 0 && (
-        <section className="py-20 bg-brand-near-black border-b border-brand-border/60">
+        <section className="py-20 bg-brand-near-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center space-x-3 mb-10 pb-4 border-b border-brand-border">
               <div className="w-2.5 h-2.5 rounded-full bg-brand-purple" />
@@ -291,13 +327,20 @@ const Services = () => {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-40px' }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+            >
               {displayedTech.map((svc, idx) => {
                 const Icon = svc.icon;
                 return (
-                  <div
+                  <motion.div
                     key={idx}
-                    className="p-6 rounded-xl bg-brand-dark-gray/70 border border-brand-border hover:border-brand-purple/40 hover:bg-brand-card-hover transition-all duration-300 flex flex-col justify-between group"
+                    variants={itemVariants}
+                    className="p-6 rounded-xl bg-brand-dark-gray/70 border border-brand-border hover:border-brand-purple/40 hover:bg-brand-card-hover transition-colors duration-300 flex flex-col justify-between group"
                   >
                     <div>
                       <div className="w-10 h-10 rounded-lg bg-white/5 border border-brand-border group-hover:border-brand-purple/40 group-hover:bg-brand-purple/15 transition-all flex items-center justify-center text-brand-violet mb-5">
@@ -334,17 +377,17 @@ const Services = () => {
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
         </section>
       )}
 
       {/* 3. Digital Growth Services Section */}
       {displayedGrowth.length > 0 && (
-        <section className="py-20 bg-brand-black border-b border-brand-border/60">
+        <section className="py-20 bg-brand-black">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center space-x-3 mb-10 pb-4 border-b border-brand-border">
               <div className="w-2.5 h-2.5 rounded-full bg-brand-magenta" />
@@ -353,13 +396,20 @@ const Services = () => {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-40px' }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+            >
               {displayedGrowth.map((svc, idx) => {
                 const Icon = svc.icon;
                 return (
-                  <div
+                  <motion.div
                     key={idx}
-                    className="p-6 rounded-xl bg-brand-dark-gray/70 border border-brand-border hover:border-brand-magenta/40 hover:bg-brand-card-hover transition-all duration-300 flex flex-col justify-between group"
+                    variants={itemVariants}
+                    className="p-6 rounded-xl bg-brand-dark-gray/70 border border-brand-border hover:border-brand-magenta/40 hover:bg-brand-card-hover transition-colors duration-300 flex flex-col justify-between group"
                   >
                     <div>
                       <div className="w-10 h-10 rounded-lg bg-white/5 border border-brand-border group-hover:border-brand-magenta/40 group-hover:bg-brand-purple/15 transition-all flex items-center justify-center text-brand-magenta mb-5">
@@ -396,10 +446,10 @@ const Services = () => {
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
         </section>
       )}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import {
   MailCheck,
   Search,
@@ -144,6 +145,10 @@ const AdminEnquiries = () => {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
+      <Helmet>
+        <title>Client Enquiries & Leads | Admin | EverPeak Solutions</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>

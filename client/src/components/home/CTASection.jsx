@@ -10,7 +10,7 @@ const CTASection = () => {
     encodeURIComponent('Hello EverPeak Solutions, I would like to discuss a project with your team.');
 
   return (
-    <section className="py-20 bg-brand-near-black relative overflow-hidden border-t border-brand-border">
+    <section className="py-20 bg-brand-near-black relative overflow-hidden">
       {/* Dynamic Purple/Magenta Ambient Glow with slow pulse */}
       <motion.div
         animate={{ scale: [1, 1.15, 1], opacity: [0.15, 0.25, 0.15] }}

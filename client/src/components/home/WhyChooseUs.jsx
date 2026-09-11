@@ -42,7 +42,7 @@ const reasons = [
 
 const WhyChooseUs = () => {
   return (
-    <section className="py-20 bg-brand-near-black relative overflow-hidden border-t border-brand-border">
+    <section className="py-20 bg-brand-near-black relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
         <motion.div
@@ -73,24 +73,26 @@ const WhyChooseUs = () => {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="p-6 rounded-xl bg-brand-dark-gray/50 border border-brand-border hover:border-brand-purple/40 hover:bg-brand-card-hover transition-colors duration-300 relative group flex flex-col justify-between shadow-lg"
+              className="card-glow-interactive group shadow-lg"
             >
-              {/* Large Number Watermark */}
-              <div className="font-mono text-2xl font-extrabold text-white/10 group-hover:text-brand-magenta/30 transition-colors mb-3">
-                {item.number}
-              </div>
+              <div className="card-glow-inner p-6 flex flex-col justify-between">
+                <div>
+                  {/* Large Number Watermark */}
+                  <div className="font-mono text-2xl font-extrabold text-white/10 group-hover:text-brand-magenta/40 transition-colors mb-3">
+                    {item.number}
+                  </div>
 
-              <div>
-                <h3 className="text-base font-bold font-heading text-white mb-2 tracking-wide">
-                  {item.title}
-                </h3>
-                <p className="text-brand-muted text-xs sm:text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+                  <h3 className="text-base font-bold font-heading text-white mb-2 tracking-wide">
+                    {item.title}
+                  </h3>
+                  <p className="text-brand-muted text-xs sm:text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
 
-              {/* Bottom Subtle Accent */}
-              <div className="mt-5 w-8 h-[2px] bg-white/10 group-hover:w-full group-hover:bg-gradient-everpeak transition-all duration-300 rounded-full" />
+                {/* Bottom Subtle Accent */}
+                <div className="mt-5 w-8 h-[2px] bg-white/10 group-hover:w-full group-hover:bg-gradient-everpeak transition-all duration-300 rounded-full" />
+              </div>
             </motion.div>
           ))}
         </div>

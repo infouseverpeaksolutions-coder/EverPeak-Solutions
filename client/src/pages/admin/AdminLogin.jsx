@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Lock, Mail, Loader2, AlertCircle, Sparkles, ArrowRight, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -40,6 +41,10 @@ const AdminLogin = () => {
 
   return (
     <div className="min-h-screen bg-brand-black flex items-center justify-center p-4 relative overflow-hidden">
+      <Helmet>
+        <title>Admin Login | EverPeak Solutions</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Ambient background glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-brand-purple/15 rounded-full blur-[140px] pointer-events-none" />
 

@@ -53,7 +53,7 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-20 bg-brand-black relative overflow-hidden border-t border-brand-border">
+    <section className="py-20 bg-brand-black relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
         <motion.div

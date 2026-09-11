@@ -43,7 +43,7 @@ const SelectedWork = () => {
   }, [selectedCategory]);
 
   return (
-    <section className="py-20 bg-brand-black relative overflow-hidden border-t border-brand-border">
+    <section className="py-20 bg-brand-black relative overflow-hidden">
       {/* Background Accent */}
       <div className="absolute top-1/4 right-10 w-96 h-96 bg-brand-purple/10 rounded-full blur-[140px] pointer-events-none" />
 

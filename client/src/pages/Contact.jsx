@@ -1,6 +1,30 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, MessageSquare, Send, CheckCircle2, AlertCircle, Loader2, Sparkles, Clock, ShieldCheck } from 'lucide-react';
 import api from '../services/api';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 const services = [
   'Web Development',
@@ -45,7 +69,6 @@ const Contact = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Contact Us | EverPeak Solutions';
   }, []);
 
   const handleChange = (e) => {
@@ -97,34 +120,61 @@ const Contact = () => {
 
   return (
     <div className="bg-brand-black min-h-screen">
+      <Helmet>
+        <title>Contact Us | Start Your Project | EverPeak Solutions</title>
+        <meta
+          name="description"
+          content="Get in touch with EverPeak Solutions for custom software, web development, mobile apps, and high-impact digital marketing. We respond within 24 hours."
+        />
+        <link rel="canonical" href="https://everpeaksolutions.com/contact" />
+        <meta property="og:title" content="Contact Us | Start Your Project | EverPeak Solutions" />
+        <meta
+          property="og:description"
+          content="Get in touch with EverPeak Solutions for custom software, web development, mobile apps, and high-impact digital marketing. We respond within 24 hours."
+        />
+        <meta property="og:url" content="https://everpeaksolutions.com/contact" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       {/* 1. Page Hero Section */}
       <section className="relative pt-36 sm:pt-44 pb-14 bg-brand-black overflow-hidden">
         <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-brand-purple/10 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        >
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
+            <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Direct Collaboration</span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold font-heading text-white tracking-tight">
+            <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold font-heading text-white tracking-tight">
               Let's Build <span className="text-gradient-purple">What's Next.</span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
+            <motion.p variants={itemVariants} className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
               Have a project in mind? Tell us what you're looking to build, improve or grow. We respond within 24 hours.
-            </p>
+            </motion.p>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 2. Contact Cards & Form Section */}
       <section className="py-20 bg-brand-near-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             {/* Left Column: Direct Contact Info (5 cols) */}
-            <div className="lg:col-span-5 space-y-5">
+            <motion.div variants={itemVariants} className="lg:col-span-5 space-y-5">
               <div className="p-6 sm:p-7 rounded-2xl bg-brand-dark-gray/80 border border-brand-border space-y-5 shadow-xl">
                 <h3 className="text-lg font-bold font-heading text-white pb-3 border-b border-white/5">
                   Contact Details
@@ -208,10 +258,10 @@ const Contact = () => {
                   All submitted enquiries are directly assigned to our principal solutions architect and digital growth leads.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Column: Contact & Enquiry Form (7 cols) */}
-            <div className="lg:col-span-7">
+            <motion.div variants={itemVariants} className="lg:col-span-7">
               <div className="p-6 sm:p-8 rounded-2xl bg-brand-dark-gray/80 border border-brand-border shadow-2xl backdrop-blur-xl">
                 {status.success ? (
                   <div className="py-10 text-center space-y-4">
@@ -402,9 +452,9 @@ const Contact = () => {
                   </form>
                 )}
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

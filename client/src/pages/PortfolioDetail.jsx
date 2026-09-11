@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
 import {
   ArrowLeft,
   ExternalLink,
@@ -14,6 +16,28 @@ import {
 } from 'lucide-react';
 import api from '../services/api';
 import { useModal } from '../context/ModalContext';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 const PortfolioDetail = () => {
   const { slug } = useParams();
@@ -35,7 +59,6 @@ const PortfolioDetail = () => {
         if (res.data.success) {
           setProject(res.data.data);
           setRelated(res.data.related || []);
-          document.title = `${res.data.data.title} | EverPeak Solutions Case Study`;
         }
       } catch (err) {
         console.error('Failed to load project:', err);
@@ -82,13 +105,34 @@ const PortfolioDetail = () => {
 
   return (
     <div className="bg-brand-black min-h-screen">
+      <Helmet>
+        <title>{`${project.title} | Case Study | EverPeak Solutions`}</title>
+        <meta
+          name="description"
+          content={project.short_description || `Learn how EverPeak Solutions delivered ${project.title}.`}
+        />
+        <link rel="canonical" href={`https://everpeaksolutions.com/portfolio/${project.slug}`} />
+        <meta property="og:title" content={`${project.title} | Case Study | EverPeak Solutions`} />
+        <meta
+          property="og:description"
+          content={project.short_description || `Learn how EverPeak Solutions delivered ${project.title}.`}
+        />
+        <meta property="og:url" content={`https://everpeaksolutions.com/portfolio/${project.slug}`} />
+        <meta property="og:type" content="article" />
+      </Helmet>
+
       {/* 1. Page Header Section */}
       <section className="relative pt-36 sm:pt-44 pb-12 bg-brand-black overflow-hidden">
         <div className="absolute top-20 left-1/4 w-[700px] h-[350px] bg-brand-purple/10 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        >
           {/* Back Link */}
-          <div className="mb-6">
+          <motion.div variants={itemVariants} className="mb-6">
             <Link
               to="/portfolio"
               className="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-wider text-brand-muted hover:text-white transition-colors"
@@ -96,10 +140,10 @@ const PortfolioDetail = () => {
               <ArrowLeft className="w-4 h-4" />
               <span>Back to all projects</span>
             </Link>
-          </div>
+          </motion.div>
 
           <div className="space-y-4 max-w-4xl">
-            <div className="flex flex-wrap items-center gap-2.5">
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2.5">
               <span className="px-3 py-1 rounded-full bg-brand-purple/20 border border-brand-purple/40 text-[11px] font-semibold text-brand-magenta uppercase tracking-wider">
                 {project.category}
               </span>
@@ -109,18 +153,18 @@ const PortfolioDetail = () => {
                   <span>Featured Project</span>
                 </span>
               )}
-            </div>
+            </motion.div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-extrabold font-heading text-white tracking-tight leading-tight">
+            <motion.h1 variants={itemVariants} className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-extrabold font-heading text-white tracking-tight leading-tight">
               {project.title}
-            </h1>
+            </motion.h1>
 
-            <p className="text-sm sm:text-base text-brand-offwhite leading-relaxed font-medium">
+            <motion.p variants={itemVariants} className="text-sm sm:text-base text-brand-offwhite leading-relaxed font-medium">
               {project.short_description}
-            </p>
+            </motion.p>
 
             {/* Action Row */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 pt-2">
               {project.project_url && (
                 <a
                   href={project.project_url}
@@ -139,40 +183,46 @@ const PortfolioDetail = () => {
               >
                 START A SIMILAR PROJECT
               </button>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 2. Main Media Showcase & Content Section */}
-      <section className="py-16 bg-brand-near-black border-b border-brand-border/60">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-brand-near-black">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
+        >
           {/* Main Showcase Banner Image */}
-          <div className="rounded-2xl overflow-hidden border border-brand-border bg-brand-dark-gray shadow-2xl mb-12 aspect-[16/9] relative">
+          <motion.div variants={itemVariants} className="rounded-2xl overflow-hidden border border-brand-border bg-brand-dark-gray shadow-2xl mb-12 aspect-[16/9] relative">
             <img
               src={mainImage}
               alt={project.title}
               className="w-full h-full object-cover object-top"
             />
-          </div>
+          </motion.div>
 
           {/* Project Details Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
             {/* Left Main Content (8 cols) */}
             <div className="lg:col-span-8 space-y-10">
               {/* Overview */}
-              <div className="space-y-3">
+              <motion.div variants={itemVariants} className="space-y-3">
                 <h2 className="text-xl sm:text-2xl font-bold font-heading text-white pb-2.5 border-b border-brand-border">
                   Project Overview
                 </h2>
                 <div className="text-brand-muted text-xs sm:text-sm leading-relaxed whitespace-pre-line">
                   {project.description}
                 </div>
-              </div>
+              </motion.div>
 
               {/* Challenge & Solution */}
               {(project.challenge || project.solution) && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+                <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
                   {project.challenge && (
                     <div className="p-5 rounded-xl bg-brand-dark-gray/60 border border-brand-border space-y-2">
                       <span className="text-[10px] font-mono font-bold text-red-400 uppercase tracking-wider">
@@ -196,12 +246,12 @@ const PortfolioDetail = () => {
                       </p>
                     </div>
                   )}
-                </div>
+                </motion.div>
               )}
 
               {/* Additional Project Screenshots */}
               {project.images && project.images.length > 1 && (
-                <div className="space-y-4 pt-4">
+                <motion.div variants={itemVariants} className="space-y-4 pt-4">
                   <h3 className="text-lg font-bold font-heading text-white">Project Screenshots</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {project.images.slice(1).map((img, idx) => (
@@ -218,14 +268,14 @@ const PortfolioDetail = () => {
                       </div>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               )}
             </div>
 
             {/* Right Sidebar Metadata (4 cols) */}
             <div className="lg:col-span-4 space-y-5">
               {/* Meta Card */}
-              <div className="p-5 sm:p-6 rounded-2xl bg-brand-dark-gray/70 border border-brand-border space-y-5 sticky top-28">
+              <motion.div variants={itemVariants} className="p-5 sm:p-6 rounded-2xl bg-brand-dark-gray/70 border border-brand-border space-y-5 sticky top-28">
                 <h3 className="text-xs font-bold font-heading text-white tracking-wider uppercase pb-2.5 border-b border-brand-border">
                   Project Scope
                 </h3>
@@ -292,10 +342,10 @@ const PortfolioDetail = () => {
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 3. Related Projects & CTA Section */}
@@ -303,7 +353,13 @@ const PortfolioDetail = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {/* Related Projects */}
           {related.length > 0 && (
-            <div className="space-y-6">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="space-y-6"
+            >
               <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">
                 Related Projects in {project.category}
               </h3>
@@ -315,26 +371,28 @@ const PortfolioDetail = () => {
                       : 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80';
 
                   return (
-                    <Link
-                      key={relProj.id}
-                      to={`/portfolio/${relProj.slug}`}
-                      className="p-3.5 rounded-xl bg-brand-dark-gray/60 border border-brand-border hover:border-brand-purple/40 transition-all duration-200 group block"
-                    >
-                      <div className="aspect-[16/10] rounded-lg overflow-hidden bg-brand-black mb-2.5">
-                        <img
-                          src={relThumbnail}
-                          alt={relProj.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                        />
-                      </div>
-                      <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-brand-magenta transition-colors line-clamp-1">
-                        {relProj.title}
-                      </h4>
-                    </Link>
+                    <motion.div variants={itemVariants} key={relProj.id}>
+                      <Link
+                        to={`/portfolio/${relProj.slug}`}
+                        className="p-3.5 rounded-xl bg-brand-dark-gray/60 border border-brand-border hover:border-brand-purple/40 transition-all duration-200 group block"
+                      >
+                        <div className="aspect-[16/10] rounded-lg overflow-hidden bg-brand-black mb-2.5">
+                          <img
+                            src={relThumbnail}
+                            alt={relProj.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                            loading="lazy"
+                          />
+                        </div>
+                        <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-brand-magenta transition-colors line-clamp-1">
+                          {relProj.title}
+                        </h4>
+                      </Link>
+                    </motion.div>
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
           )}
 
           {/* Have a similar project CTA Banner */}

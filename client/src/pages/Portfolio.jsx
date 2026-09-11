@@ -1,8 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { motion } from 'framer-motion';
 import { Search, Loader2, ExternalLink, ArrowRight, FolderKanban, Sparkles } from 'lucide-react';
 import api from '../services/api';
 import CTASection from '../components/home/CTASection';
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 const categories = [
   'ALL',
@@ -22,7 +46,6 @@ const Portfolio = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = 'Selected Portfolio & Case Studies | EverPeak Solutions';
   }, []);
 
   useEffect(() => {
@@ -57,31 +80,52 @@ const Portfolio = () => {
 
   return (
     <div className="bg-brand-black min-h-screen">
+      <Helmet>
+        <title>Portfolio & Case Studies | EverPeak Solutions</title>
+        <meta
+          name="description"
+          content="Explore our portfolio of web applications, mobile apps, e-commerce stores, and digital marketing campaigns built for modern brands."
+        />
+        <link rel="canonical" href="https://everpeaksolutions.com/portfolio" />
+        <meta property="og:title" content="Portfolio & Case Studies | EverPeak Solutions" />
+        <meta
+          property="og:description"
+          content="Explore our portfolio of web applications, mobile apps, e-commerce stores, and digital marketing campaigns built for modern brands."
+        />
+        <meta property="og:url" content="https://everpeaksolutions.com/portfolio" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
       {/* 1. Page Hero & Controls Section */}
       <section className="relative min-h-[calc(100vh-72px)] flex flex-col justify-center items-center pt-28 pb-16 bg-brand-black overflow-hidden">
         <div className="absolute top-20 right-1/3 w-[700px] h-[350px] bg-brand-purple/10 rounded-full blur-[140px] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto"
+        >
           <div className="text-center max-w-5xl mx-auto mb-10 sm:mb-12 space-y-4">
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-wider">
+            <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               <span>OUR PORTFOLIO · Selected Work · Digital Experiences · Real Results</span>
-            </div>
+            </motion.div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold font-heading text-white tracking-tight leading-[1.18]">
+            <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold font-heading text-white tracking-tight leading-[1.18]">
               Explore the Work We’ve Built to{' '}
               <span className="text-gradient-purple">Elevate Brands,</span>{' '}
               <span className="text-brand-magenta">Empower Businesses,</span> and{' '}
               <span className="text-gradient-silver">Drive Digital Growth.</span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
+            <motion.p variants={itemVariants} className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
               Explore our proven track record across custom full-stack web platforms, mobile apps, e-commerce storefronts, and high-ROI performance marketing campaigns.
-            </p>
+            </motion.p>
           </div>
 
           {/* Centered Controls Container */}
-          <div className="max-w-4xl mx-auto space-y-4 pt-1">
+          <motion.div variants={itemVariants} className="max-w-4xl mx-auto space-y-4 pt-1">
             {/* Centered Category Filter Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
               {categories.map((cat) => (
@@ -112,12 +156,12 @@ const Portfolio = () => {
                 />
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* 2. Projects Grid Section */}
-      <section className="py-20 bg-brand-near-black border-b border-brand-border/60">
+      <section className="py-20 bg-brand-near-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="py-24 flex flex-col items-center justify-center space-y-4 text-brand-muted">
@@ -137,7 +181,13 @@ const Portfolio = () => {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
+            >
               {projects.map((project) => {
                 const thumbnail =
                   project.images && project.images.length > 0
@@ -145,7 +195,8 @@ const Portfolio = () => {
                     : 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80';
 
                 return (
-                  <div
+                  <motion.div
+                    variants={itemVariants}
                     key={project.id}
                     className="group rounded-xl bg-brand-dark-gray/70 border border-brand-border overflow-hidden hover:border-brand-purple/40 hover:bg-brand-card-hover transition-all duration-300 flex flex-col justify-between"
                   >
@@ -221,10 +272,10 @@ const Portfolio = () => {
                         </a>
                       )}
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           )}
         </div>
       </section>

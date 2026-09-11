@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import {
   ArrowLeft,
   Save,
@@ -229,6 +230,10 @@ const AdminProjectForm = () => {
 
   return (
     <div className="space-y-8 max-w-5xl mx-auto pb-16">
+      <Helmet>
+        <title>{isEdit ? 'Edit Project' : 'New Project'} | Admin | EverPeak Solutions</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
