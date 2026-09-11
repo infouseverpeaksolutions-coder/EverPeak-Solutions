@@ -113,7 +113,7 @@ const AdminDashboard = () => {
       {/* Top Header & Quick Actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-heading text-white">Dashboard Overview</h1>
+          <h1 className="text-2xl sm:text-3xl font-semibold font-heading text-white">Dashboard Overview</h1>
           <p className="text-xs text-brand-muted mt-1">Real-time MySQL metrics, portfolio stats & client inquiries.</p>
         </div>
 
@@ -153,7 +153,7 @@ const AdminDashboard = () => {
               </div>
 
               <div>
-                <div className="text-3xl font-bold font-heading text-white">{card.value}</div>
+                <div className="text-3xl font-semibold font-heading text-white">{card.value}</div>
                 <div className="text-xs text-brand-muted mt-1">{card.sub}</div>
               </div>
             </div>
@@ -165,7 +165,7 @@ const AdminDashboard = () => {
       <div className="rounded-2xl bg-brand-dark-gray/80 border border-brand-border overflow-hidden">
         <div className="p-6 border-b border-brand-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 className="text-lg font-bold font-heading text-white">Recent Website Enquiries</h2>
+            <h2 className="text-lg font-medium font-heading text-white">Recent Website Enquiries</h2>
             <p className="text-xs text-brand-muted">Latest leads captured through modal & contact forms</p>
           </div>
           <div className="flex items-center space-x-3 shrink-0">

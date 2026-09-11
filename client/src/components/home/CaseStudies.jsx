@@ -74,7 +74,7 @@ const CaseStudies = () => {
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-purple uppercase tracking-widest">
             <span>Verified Results</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
             Proof Through Performance
           </h2>
           <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
@@ -98,7 +98,7 @@ const CaseStudies = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] font-mono font-bold text-brand-magenta uppercase tracking-wider">
+                    <span className="text-[10px] font-mono font-medium text-brand-magenta uppercase tracking-wider">
                       {study.tag}
                     </span>
                     <div className="w-9 h-9 rounded-lg bg-white/5 border border-brand-border group-hover:border-brand-purple/40 flex items-center justify-center text-brand-violet">
@@ -106,7 +106,7 @@ const CaseStudies = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold font-heading text-white mb-1.5 group-hover:text-brand-offwhite">
+                  <h3 className="text-base sm:text-lg font-medium font-heading text-white mb-1.5 group-hover:text-brand-offwhite">
                     {study.client}
                   </h3>
 
@@ -121,7 +121,7 @@ const CaseStudies = () => {
 
                 {/* Highlight Metric Badge */}
                 <div className="pt-3 border-t border-white/5 flex items-center justify-between">
-                  <div className="text-lg sm:text-xl font-extrabold font-heading text-gradient-purple">
+                  <div className="text-lg sm:text-xl font-semibold font-heading text-gradient-purple">
                     {study.metric}
                   </div>
                   <div className="text-[11px] font-mono text-brand-muted">

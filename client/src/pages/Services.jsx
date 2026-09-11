@@ -268,7 +268,7 @@ const Services = () => {
               <span>Full-Stack Capabilities</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-extrabold font-heading text-white tracking-tight leading-[1.16]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-semibold font-heading text-white tracking-tight leading-[1.16]">
               From Technology to Digital Growth, We Build Powerful Solutions That Help Your Business{' '}
               <span className="text-gradient-purple">Stand Out,</span>{' '}
               <span className="text-brand-magenta">Scale Faster,</span> and{' '}
@@ -322,7 +322,7 @@ const Services = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center space-x-3 mb-10 pb-4 border-b border-brand-border">
               <div className="w-2.5 h-2.5 rounded-full bg-brand-purple" />
-              <h2 className="text-xl sm:text-2xl font-bold font-heading text-white tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-semibold font-heading text-white tracking-tight">
                 Technology & Software Engineering
               </h2>
             </div>
@@ -347,7 +347,7 @@ const Services = () => {
                         <Icon className="w-5 h-5" />
                       </div>
 
-                      <h3 className="text-base sm:text-lg font-bold font-heading text-white mb-2 group-hover:text-brand-offwhite">
+                      <h3 className="text-base sm:text-lg font-medium font-heading text-white mb-2 group-hover:text-brand-offwhite">
                         {svc.title}
                       </h3>
 
@@ -356,7 +356,7 @@ const Services = () => {
                       </p>
 
                       <div className="space-y-1.5 mb-6">
-                        <span className="text-[10px] font-mono font-bold text-white/50 uppercase tracking-wider block mb-1.5">
+                        <span className="text-[10px] font-mono font-medium text-white/50 uppercase tracking-wider block mb-1.5">
                           Key Deliverables:
                         </span>
                         {svc.deliverables.map((item, dIdx) => (
@@ -391,7 +391,7 @@ const Services = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center space-x-3 mb-10 pb-4 border-b border-brand-border">
               <div className="w-2.5 h-2.5 rounded-full bg-brand-magenta" />
-              <h2 className="text-xl sm:text-2xl font-bold font-heading text-white tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-semibold font-heading text-white tracking-tight">
                 Digital Growth & Performance Marketing
               </h2>
             </div>
@@ -416,7 +416,7 @@ const Services = () => {
                         <Icon className="w-5 h-5" />
                       </div>
 
-                      <h3 className="text-base sm:text-lg font-bold font-heading text-white mb-2 group-hover:text-brand-offwhite">
+                      <h3 className="text-base sm:text-lg font-medium font-heading text-white mb-2 group-hover:text-brand-offwhite">
                         {svc.title}
                       </h3>
 

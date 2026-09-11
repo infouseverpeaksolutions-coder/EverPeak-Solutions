@@ -129,7 +129,7 @@ const About = () => {
               <span>About EverPeak Solutions</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-extrabold font-heading text-white tracking-tight leading-[1.18] max-w-4xl mx-auto">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-semibold font-heading text-white tracking-tight leading-[1.18] max-w-4xl mx-auto">
               Where Technology Meets{' '}
               <span className="text-gradient-purple">Creativity,</span>{' '}
               <span className="text-brand-magenta">Strategy,</span> and Ambition to{' '}
@@ -158,7 +158,7 @@ const About = () => {
             className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
           >
             <motion.div variants={itemVariants} className="p-6 rounded-2xl bg-brand-dark-gray/50 border border-brand-border text-center">
-              <div className="text-3xl sm:text-4xl font-extrabold font-heading text-gradient-purple">
+              <div className="text-3xl sm:text-4xl font-semibold font-heading text-gradient-purple">
                 6+
               </div>
               <div className="text-xs sm:text-sm font-semibold text-white mt-1.5 font-heading">Years Experience</div>
@@ -166,7 +166,7 @@ const About = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="p-6 rounded-2xl bg-brand-dark-gray/50 border border-brand-border text-center">
-              <div className="text-3xl sm:text-4xl font-extrabold font-heading text-white">
+              <div className="text-3xl sm:text-4xl font-semibold font-heading text-white">
                 600+
               </div>
               <div className="text-xs sm:text-sm font-semibold text-white mt-1.5 font-heading">Projects Delivered</div>
@@ -174,7 +174,7 @@ const About = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="p-6 rounded-2xl bg-brand-dark-gray/50 border border-brand-border text-center">
-              <div className="text-3xl sm:text-4xl font-extrabold font-heading text-gradient-purple">
+              <div className="text-3xl sm:text-4xl font-semibold font-heading text-gradient-purple">
                 350+
               </div>
               <div className="text-xs sm:text-sm font-semibold text-white mt-1.5 font-heading">Happy Clients</div>
@@ -182,7 +182,7 @@ const About = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="p-6 rounded-2xl bg-brand-dark-gray/50 border border-brand-border text-center">
-              <div className="text-3xl sm:text-4xl font-extrabold font-heading text-white">
+              <div className="text-3xl sm:text-4xl font-semibold font-heading text-white">
                 98%
               </div>
               <div className="text-xs sm:text-sm font-semibold text-white mt-1.5 font-heading">Satisfaction Rate</div>
@@ -206,7 +206,7 @@ const About = () => {
               <div className="w-12 h-12 rounded-xl bg-brand-purple/20 border border-brand-purple/40 flex items-center justify-center text-brand-magenta">
                 <Target className="w-6 h-6" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">Our Mission</h3>
+              <h3 className="text-xl sm:text-2xl font-medium font-heading text-white">Our Mission</h3>
               <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-md">
                 Deliver innovative IT & marketing solutions, empower businesses to scale online efficiently, and build long-term, transparent partnerships founded on measurable commercial results.
               </p>
@@ -216,7 +216,7 @@ const About = () => {
               <div className="w-12 h-12 rounded-xl bg-brand-magenta/20 border border-brand-magenta/40 flex items-center justify-center text-brand-magenta">
                 <Eye className="w-6 h-6" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">Our Vision</h3>
+              <h3 className="text-xl sm:text-2xl font-medium font-heading text-white">Our Vision</h3>
               <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-md">
                 Become India's most trusted digital growth partner by continuously fusing high-performance software engineering, cutting-edge creative design, and data-driven marketing.
               </p>
@@ -235,10 +235,10 @@ const About = () => {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="p-8 sm:p-12 rounded-2xl bg-gradient-card border border-brand-border space-y-5"
           >
-            <span className="text-[11px] font-mono font-bold text-brand-magenta uppercase tracking-wider inline-block">
+            <span className="text-[11px] font-mono font-medium text-brand-magenta uppercase tracking-wider inline-block">
               Integrated Digital Ecosystem
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-white">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white">
               One Partner. Multiple Digital Solutions.
             </h2>
             <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-2xl mx-auto">
@@ -264,7 +264,7 @@ const About = () => {
             <span className="text-[11px] font-semibold text-brand-purple uppercase tracking-widest">
               Guiding Principles
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white">
               Our Core Values
             </h2>
           </div>
@@ -287,7 +287,7 @@ const About = () => {
                   <div className="w-10 h-10 rounded-lg bg-white/5 border border-brand-border flex items-center justify-center text-brand-violet">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h4 className="text-base font-bold font-heading text-white">{val.title}</h4>
+                  <h4 className="text-base font-medium font-heading text-white">{val.title}</h4>
                   <p className="text-xs text-brand-muted leading-relaxed">{val.description}</p>
                 </motion.div>
               );
@@ -303,7 +303,7 @@ const About = () => {
             <span className="text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
               Multidisciplinary Talent
             </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white">
               Meet Our Specialist Teams
             </h2>
           </div>
@@ -321,7 +321,7 @@ const About = () => {
                 variants={itemVariants}
                 className="p-6 rounded-xl bg-brand-dark-gray/60 border border-brand-border space-y-2 hover:border-white/20 transition-colors"
               >
-                <h4 className="text-base font-bold text-white font-heading">{role.role}</h4>
+                <h4 className="text-base font-medium text-white font-heading">{role.role}</h4>
                 <p className="text-xs text-brand-muted leading-relaxed">{role.desc}</p>
               </motion.div>
             ))}
@@ -339,7 +339,7 @@ const About = () => {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="p-8 sm:p-10 rounded-2xl bg-brand-dark-gray/40 border border-brand-border text-center space-y-6"
           >
-            <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">
+            <h3 className="text-xl sm:text-2xl font-medium font-heading text-white">
               Industries We Empower Pan-India
             </h3>
             <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 max-w-4xl mx-auto">

@@ -55,7 +55,7 @@ const ProcessSection = () => {
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
             <span>Our Proven Methodology</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
             How We Work
           </h2>
           <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
@@ -91,7 +91,7 @@ const ProcessSection = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-bold font-heading text-white mb-1 tracking-wide group-hover:text-brand-offwhite">
+                  <h3 className="text-lg font-medium font-heading text-white mb-1 tracking-wide group-hover:text-brand-offwhite">
                     {item.title}
                   </h3>
                   <div className="text-xs font-semibold text-brand-muted/70 mb-3">

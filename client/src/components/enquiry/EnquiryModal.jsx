@@ -163,7 +163,7 @@ const EnquiryModal = () => {
               <div className="w-16 h-16 mx-auto rounded-full bg-brand-purple/20 border border-brand-magenta/40 flex items-center justify-center text-brand-magenta">
                 <CheckCircle className="w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-bold font-heading text-white">
+              <h3 className="text-2xl font-medium font-heading text-white">
                 Thank You!
               </h3>
               <p className="text-brand-muted text-sm max-w-md mx-auto leading-relaxed">
@@ -198,7 +198,7 @@ const EnquiryModal = () => {
                   <Sparkles className="w-4 h-4" />
                   <span>Start Your Project</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold font-heading text-white tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-semibold font-heading text-white tracking-tight">
                   Let's Build Something Great
                 </h2>
                 <p className="text-brand-muted text-sm">

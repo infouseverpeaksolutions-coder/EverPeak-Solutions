@@ -244,7 +244,7 @@ const AdminProjectForm = () => {
             <ArrowLeft className="w-4 h-4" />
           </Link>
           <div>
-            <h1 className="text-2xl font-bold font-heading text-white">
+            <h1 className="text-2xl font-semibold font-heading text-white">
               {isEdit ? 'Edit Portfolio Project' : 'Add New Portfolio Project'}
             </h1>
             <p className="text-xs text-brand-muted mt-0.5">
@@ -264,7 +264,7 @@ const AdminProjectForm = () => {
       {/* Form Card */}
       <form onSubmit={handleSubmit} className="space-y-8">
         <div className="p-8 rounded-3xl bg-brand-dark-gray/80 border border-brand-border space-y-6">
-          <h2 className="text-lg font-bold font-heading text-white pb-3 border-b border-white/5">
+          <h2 className="text-lg font-medium font-heading text-white pb-3 border-b border-white/5">
             Core Information
           </h2>
 
@@ -351,7 +351,7 @@ const AdminProjectForm = () => {
 
         {/* Case Study Details */}
         <div className="p-8 rounded-3xl bg-brand-dark-gray/80 border border-brand-border space-y-6">
-          <h2 className="text-lg font-bold font-heading text-white pb-3 border-b border-white/5">
+          <h2 className="text-lg font-medium font-heading text-white pb-3 border-b border-white/5">
             Case Study Depth & Tech Stack
           </h2>
 
@@ -430,7 +430,7 @@ const AdminProjectForm = () => {
 
         {/* Media & Image Uploads */}
         <div className="p-8 rounded-3xl bg-brand-dark-gray/80 border border-brand-border space-y-6">
-          <h2 className="text-lg font-bold font-heading text-white pb-3 border-b border-white/5">
+          <h2 className="text-lg font-medium font-heading text-white pb-3 border-b border-white/5">
             Project Images & Screenshots
           </h2>
 
@@ -524,7 +524,7 @@ const AdminProjectForm = () => {
 
         {/* Status & Options */}
         <div className="p-8 rounded-3xl bg-brand-dark-gray/80 border border-brand-border space-y-6">
-          <h2 className="text-lg font-bold font-heading text-white pb-3 border-b border-white/5">
+          <h2 className="text-lg font-medium font-heading text-white pb-3 border-b border-white/5">
             Publishing Options
           </h2>
 

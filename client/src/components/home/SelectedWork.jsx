@@ -61,7 +61,7 @@ const SelectedWork = () => {
               <Sparkles className="w-3 h-3" />
               <span>Real Client Impact</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
               Selected Work
             </h2>
             <p className="text-brand-muted text-xs sm:text-sm max-w-lg leading-relaxed">
@@ -154,7 +154,7 @@ const SelectedWork = () => {
 
                     {/* Content */}
                     <div className="p-6 space-y-3">
-                      <h3 className="text-lg font-bold font-heading text-white group-hover:text-brand-offwhite transition-colors line-clamp-1">
+                      <h3 className="text-lg font-medium font-heading text-white group-hover:text-brand-offwhite transition-colors line-clamp-1">
                         {project.title}
                       </h3>
                       <p className="text-brand-muted text-xs sm:text-sm leading-relaxed line-clamp-2">

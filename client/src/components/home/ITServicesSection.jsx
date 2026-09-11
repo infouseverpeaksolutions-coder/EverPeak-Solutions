@@ -127,7 +127,7 @@ const ITServicesSection = () => {
             <Code2 className="w-3.5 h-3.5" />
             <span>IT & Software Engineering</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
             Scalable IT Solutions Built For Enterprise Growth
           </h2>
           <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
@@ -191,7 +191,7 @@ const ITServicesSection = () => {
                       <span className="text-[11px] font-semibold text-brand-magenta uppercase tracking-wider">
                         {currentCategory.title}
                       </span>
-                      <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">
+                      <h3 className="text-xl sm:text-2xl font-medium font-heading text-white">
                         {currentCategory.headline}
                       </h3>
                     </div>

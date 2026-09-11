@@ -84,7 +84,7 @@ const PortfolioDetail = () => {
     return (
       <div className="bg-brand-black min-h-screen pt-40 pb-20 px-4 text-center space-y-6">
         <div className="max-w-md mx-auto p-8 rounded-2xl bg-brand-dark-gray border border-brand-border space-y-4">
-          <h2 className="text-2xl font-bold font-heading text-white">Case Study Not Found</h2>
+          <h2 className="text-2xl font-medium font-heading text-white">Case Study Not Found</h2>
           <p className="text-brand-muted text-sm">{error || 'This portfolio project does not exist.'}</p>
           <Link
             to="/portfolio"
@@ -155,7 +155,7 @@ const PortfolioDetail = () => {
               )}
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-extrabold font-heading text-white tracking-tight leading-tight">
+            <motion.h1 variants={itemVariants} className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold font-heading text-white tracking-tight leading-tight">
               {project.title}
             </motion.h1>
 
@@ -212,7 +212,7 @@ const PortfolioDetail = () => {
             <div className="lg:col-span-8 space-y-10">
               {/* Overview */}
               <motion.div variants={itemVariants} className="space-y-3">
-                <h2 className="text-xl sm:text-2xl font-bold font-heading text-white pb-2.5 border-b border-brand-border">
+                <h2 className="text-xl sm:text-2xl font-semibold font-heading text-white pb-2.5 border-b border-brand-border">
                   Project Overview
                 </h2>
                 <div className="text-brand-muted text-xs sm:text-sm leading-relaxed whitespace-pre-line">
@@ -225,10 +225,10 @@ const PortfolioDetail = () => {
                 <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
                   {project.challenge && (
                     <div className="p-5 rounded-xl bg-brand-dark-gray/60 border border-brand-border space-y-2">
-                      <span className="text-[10px] font-mono font-bold text-red-400 uppercase tracking-wider">
+                      <span className="text-[10px] font-mono font-medium text-red-400 uppercase tracking-wider">
                         The Challenge
                       </span>
-                      <h3 className="text-base font-bold font-heading text-white">What we tackled</h3>
+                      <h3 className="text-base font-medium font-heading text-white">What we tackled</h3>
                       <p className="text-xs text-brand-muted leading-relaxed">
                         {project.challenge}
                       </p>
@@ -237,10 +237,10 @@ const PortfolioDetail = () => {
 
                   {project.solution && (
                     <div className="p-5 rounded-xl bg-brand-dark-gray/60 border border-brand-border space-y-2">
-                      <span className="text-[10px] font-mono font-bold text-green-400 uppercase tracking-wider">
+                      <span className="text-[10px] font-mono font-medium text-green-400 uppercase tracking-wider">
                         The Solution
                       </span>
-                      <h3 className="text-base font-bold font-heading text-white">How we solved it</h3>
+                      <h3 className="text-base font-medium font-heading text-white">How we solved it</h3>
                       <p className="text-xs text-brand-muted leading-relaxed">
                         {project.solution}
                       </p>
@@ -252,7 +252,7 @@ const PortfolioDetail = () => {
               {/* Additional Project Screenshots */}
               {project.images && project.images.length > 1 && (
                 <motion.div variants={itemVariants} className="space-y-4 pt-4">
-                  <h3 className="text-lg font-bold font-heading text-white">Project Screenshots</h3>
+                  <h3 className="text-lg font-medium font-heading text-white">Project Screenshots</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {project.images.slice(1).map((img, idx) => (
                       <div
@@ -276,7 +276,7 @@ const PortfolioDetail = () => {
             <div className="lg:col-span-4 space-y-5">
               {/* Meta Card */}
               <motion.div variants={itemVariants} className="p-5 sm:p-6 rounded-2xl bg-brand-dark-gray/70 border border-brand-border space-y-5 sticky top-28">
-                <h3 className="text-xs font-bold font-heading text-white tracking-wider uppercase pb-2.5 border-b border-brand-border">
+                <h3 className="text-xs font-medium font-heading text-white tracking-wider uppercase pb-2.5 border-b border-brand-border">
                   Project Scope
                 </h3>
 
@@ -336,7 +336,7 @@ const PortfolioDetail = () => {
                 <div className="pt-2">
                   <button
                     onClick={() => openEnquiryModal(`Consultation for ${project.title}`)}
-                    className="btn-3d-matte-primary w-full py-3 px-4 rounded-xl text-white font-bold text-xs uppercase tracking-wider flex items-center justify-center space-x-1.5 outline-none focus:outline-none"
+                    className="btn-3d-matte-primary w-full py-3 px-4 rounded-xl text-white font-semibold text-xs uppercase tracking-wider flex items-center justify-center space-x-1.5 outline-none focus:outline-none"
                   >
                     <span>REQUEST CONSULTATION</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -360,7 +360,7 @@ const PortfolioDetail = () => {
               viewport={{ once: true, margin: '-60px' }}
               className="space-y-6"
             >
-              <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">
+              <h3 className="text-xl sm:text-2xl font-semibold font-heading text-white">
                 Related Projects in {project.category}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -384,7 +384,7 @@ const PortfolioDetail = () => {
                             loading="lazy"
                           />
                         </div>
-                        <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-brand-magenta transition-colors line-clamp-1">
+                        <h4 className="text-xs sm:text-sm font-medium text-white group-hover:text-brand-magenta transition-colors line-clamp-1">
                           {relProj.title}
                         </h4>
                       </Link>
@@ -397,7 +397,7 @@ const PortfolioDetail = () => {
 
           {/* Have a similar project CTA Banner */}
           <div className="p-8 sm:p-10 rounded-2xl bg-brand-dark-gray/80 border border-brand-border text-center space-y-4">
-            <h3 className="text-xl sm:text-2xl font-extrabold font-heading text-white">
+            <h3 className="text-xl sm:text-2xl font-semibold font-heading text-white">
               Have a Similar Project?
             </h3>
             <p className="text-brand-muted text-xs sm:text-sm max-w-lg mx-auto">

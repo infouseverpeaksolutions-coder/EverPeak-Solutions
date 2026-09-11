@@ -60,7 +60,7 @@ const AdminLogin = () => {
               <ShieldCheck className="w-4 h-4" />
               <span>Admin Management Portal</span>
             </div>
-            <h2 className="text-2xl font-bold font-heading text-white">Sign In to Dashboard</h2>
+            <h2 className="text-2xl font-semibold font-heading text-white">Sign In to Dashboard</h2>
           </div>
 
           {error && (

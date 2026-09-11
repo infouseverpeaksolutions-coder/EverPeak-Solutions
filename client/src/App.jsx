@@ -60,8 +60,8 @@ function App() {
               <PageTransition>
                 <div className="min-h-screen bg-brand-black flex items-center justify-center p-6 text-center">
                   <div className="max-w-md space-y-4">
-                    <h1 className="text-6xl font-extrabold font-heading text-gradient-purple">404</h1>
-                    <h2 className="text-2xl font-bold font-heading text-white">Page Not Found</h2>
+                    <h1 className="text-6xl font-semibold font-heading text-gradient-purple">404</h1>
+                    <h2 className="text-2xl font-medium font-heading text-white">Page Not Found</h2>
                     <p className="text-sm text-brand-muted">
                       The page you are looking for does not exist or has been moved.
                     </p>

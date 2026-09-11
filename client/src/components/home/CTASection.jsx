@@ -32,7 +32,7 @@ const CTASection = () => {
           </div>
 
           <div className="space-y-3 max-w-2xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-white tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight leading-tight">
               Have a project in mind?
             </h2>
             <p className="text-base sm:text-lg text-brand-offwhite/90 font-semibold">

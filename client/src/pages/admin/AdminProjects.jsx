@@ -110,7 +110,7 @@ const AdminProjects = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-heading text-white">Portfolio Projects</h1>
+          <h1 className="text-2xl sm:text-3xl font-semibold font-heading text-white">Portfolio Projects</h1>
           <p className="text-xs text-brand-muted mt-1">
             Manage your case studies, publish/unpublish, feature highlights, and media.
           </p>

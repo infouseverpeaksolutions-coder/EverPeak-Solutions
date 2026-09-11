@@ -152,7 +152,7 @@ const AdminEnquiries = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold font-heading text-white">
+          <h1 className="text-2xl sm:text-3xl font-semibold font-heading text-white">
             Client Enquiries & Leads
           </h1>
           <p className="text-xs text-brand-muted mt-1">
@@ -333,7 +333,7 @@ const AdminEnquiries = () => {
                 <span className="text-[10px] font-mono text-brand-muted uppercase tracking-wider">
                   ENQUIRY #{selectedEnquiry.id}
                 </span>
-                <h3 className="text-xl font-bold font-heading text-white mt-1">
+                <h3 className="text-xl font-medium font-heading text-white mt-1">
                   {selectedEnquiry.full_name}
                 </h3>
               </div>

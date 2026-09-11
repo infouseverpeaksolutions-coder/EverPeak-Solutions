@@ -112,7 +112,7 @@ const Portfolio = () => {
               <span>OUR PORTFOLIO · Selected Work · Digital Experiences · Real Results</span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-extrabold font-heading text-white tracking-tight leading-[1.18]">
+            <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-semibold font-heading text-white tracking-tight leading-[1.18]">
               Explore the Work We’ve Built to{' '}
               <span className="text-gradient-purple">Elevate Brands,</span>{' '}
               <span className="text-brand-magenta">Empower Businesses,</span> and{' '}
@@ -219,7 +219,7 @@ const Portfolio = () => {
                       {/* Content */}
                       <div className="p-5 space-y-2">
                         <Link to={`/portfolio/${project.slug}`}>
-                          <h3 className="text-base font-bold font-heading text-white group-hover:text-brand-offwhite transition-colors line-clamp-1">
+                          <h3 className="text-base font-medium font-heading text-white group-hover:text-brand-offwhite transition-colors line-clamp-1">
                             {project.title}
                           </h3>
                         </Link>

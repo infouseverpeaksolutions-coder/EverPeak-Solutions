@@ -152,7 +152,7 @@ const Contact = () => {
               <span>Direct Collaboration</span>
             </motion.div>
 
-            <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold font-heading text-white tracking-tight">
+            <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-semibold font-heading text-white tracking-tight">
               Let's Build <span className="text-gradient-purple">What's Next.</span>
             </motion.h1>
 
@@ -176,7 +176,7 @@ const Contact = () => {
             {/* Left Column: Direct Contact Info (5 cols) */}
             <motion.div variants={itemVariants} className="lg:col-span-5 space-y-5">
               <div className="p-6 sm:p-7 rounded-2xl bg-brand-dark-gray/80 border border-brand-border space-y-5 shadow-xl">
-                <h3 className="text-lg font-bold font-heading text-white pb-3 border-b border-white/5">
+                <h3 className="text-lg font-medium font-heading text-white pb-3 border-b border-white/5">
                   Contact Details
                 </h3>
 
@@ -268,7 +268,7 @@ const Contact = () => {
                     <div className="w-14 h-14 mx-auto rounded-full bg-brand-purple/20 border border-brand-magenta/40 flex items-center justify-center text-brand-magenta">
                       <CheckCircle2 className="w-7 h-7" />
                     </div>
-                    <h3 className="text-xl sm:text-2xl font-bold font-heading text-white">Thank You!</h3>
+                    <h3 className="text-xl sm:text-2xl font-medium font-heading text-white">Thank You!</h3>
                     <p className="text-brand-muted text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
                       Your message has been submitted successfully. Our team will review your project requirements and get back to you within 24 hours.
                     </p>
@@ -284,7 +284,7 @@ const Contact = () => {
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                      <h3 className="text-xl font-bold font-heading text-white">
+                      <h3 className="text-xl font-medium font-heading text-white">
                         Send Us A Message
                       </h3>
                       <p className="text-xs text-brand-muted mt-1">

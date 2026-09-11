@@ -23,7 +23,7 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['Poppins', 'sans-serif'],
+        heading: ['Sora', 'sans-serif'],
         sans: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },

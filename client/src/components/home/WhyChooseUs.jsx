@@ -55,7 +55,7 @@ const WhyChooseUs = () => {
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-offwhite uppercase tracking-widest">
             <span>The EverPeak Advantage</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
             Why Businesses Choose EverPeak
           </h2>
           <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
@@ -78,11 +78,11 @@ const WhyChooseUs = () => {
               <div className="card-glow-inner p-6 flex flex-col justify-between">
                 <div>
                   {/* Large Number Watermark */}
-                  <div className="font-mono text-2xl font-extrabold text-white/10 group-hover:text-brand-magenta/40 transition-colors mb-3">
+                  <div className="font-mono text-2xl font-semibold text-white/10 group-hover:text-brand-magenta/40 transition-colors mb-3">
                     {item.number}
                   </div>
 
-                  <h3 className="text-base font-bold font-heading text-white mb-2 tracking-wide">
+                  <h3 className="text-base font-medium font-heading text-white mb-2 tracking-wide">
                     {item.title}
                   </h3>
                   <p className="text-brand-muted text-xs sm:text-sm leading-relaxed">

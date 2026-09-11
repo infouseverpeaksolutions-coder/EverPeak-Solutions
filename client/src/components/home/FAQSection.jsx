@@ -67,7 +67,7 @@ const FAQSection = () => {
             <HelpCircle className="w-3.5 h-3.5 text-brand-magenta" />
             <span>Got Questions?</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
             Frequently Asked Questions
           </h2>
           <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
@@ -92,7 +92,7 @@ const FAQSection = () => {
                   onClick={() => toggleFAQ(idx)}
                   className="w-full p-4 sm:p-5 text-left flex items-center justify-between space-x-4 focus:outline-none"
                 >
-                  <span className="text-sm sm:text-base font-semibold text-white font-heading">
+                  <span className="text-sm sm:text-base font-medium text-white font-heading">
                     {faq.question}
                   </span>
                   <div

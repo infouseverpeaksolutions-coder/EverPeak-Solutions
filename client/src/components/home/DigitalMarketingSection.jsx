@@ -101,7 +101,7 @@ const DigitalMarketingSection = () => {
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
             <span>Growth & Customer Acquisition</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
             Turn Attention Into Growth
           </h2>
           <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
@@ -137,7 +137,7 @@ const DigitalMarketingSection = () => {
                       </span>
                     </div>
 
-                    <h3 className="text-base sm:text-lg font-bold font-heading text-white mb-2.5 group-hover:text-brand-offwhite transition-colors">
+                    <h3 className="text-base sm:text-lg font-medium font-heading text-white mb-2.5 group-hover:text-brand-offwhite transition-colors">
                       {service.title}
                     </h3>
 

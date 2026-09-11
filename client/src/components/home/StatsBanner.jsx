@@ -48,7 +48,7 @@ const StatsBanner = () => {
               transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="p-5 rounded-xl bg-brand-dark-gray/60 border border-brand-border/80 hover:border-brand-purple/40 hover:bg-brand-card-hover transition-colors duration-300 group text-center shadow-lg"
             >
-              <div className="text-2xl sm:text-3xl font-extrabold font-heading text-white group-hover:text-gradient-purple transition-all duration-300">
+              <div className="text-2xl sm:text-3xl font-semibold font-heading text-white group-hover:text-gradient-purple transition-all duration-300">
                 <CountUp target={stat.target} suffix={stat.suffix} />
               </div>
               <div className="text-[11px] sm:text-xs font-medium text-brand-muted mt-1.5">

@@ -28,32 +28,41 @@ const Hero = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto flex flex-col justify-center items-center">
         {/* Centered Hero Content */}
         <div className="max-w-5xl mx-auto text-center space-y-5 sm:space-y-6">
-          {/* Main Headline with Rotating Word Animation */}
+          {/* Main Headline arranged into 3 uniform lines with Rotating Word Animation */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-[58px] xl:text-[66px] font-extrabold font-heading text-white tracking-tight leading-[1.12]"
+            className="text-[24px] min-[380px]:text-[27px] sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] font-semibold font-heading text-white tracking-tight leading-[1.2] sm:leading-[1.18] md:leading-[1.15]"
           >
-            Elevate Your <span className="text-gradient-purple">Vision Into Reality.</span>
-            <br />
-            Innovate <span className="text-brand-magenta">Beyond Expectations.</span>
-            <br />
-            <span className="inline-flex flex-wrap items-center justify-center gap-x-2.5">
-              <span>Dominate Your Digital</span>
-              <span className="relative inline-flex min-w-[140px] sm:min-w-[190px] md:min-w-[240px] lg:min-w-[270px] text-left justify-start">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={headlineWords[wordIndex]}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -16 }}
-                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                    className="text-gradient-silver inline-block"
-                  >
-                    {headlineWords[wordIndex]}
-                  </motion.span>
-                </AnimatePresence>
+            {/* Line 1 */}
+            <span className="block">
+              Elevate Your <span className="text-gradient-purple">Vision Into Reality.</span>
+            </span>
+            
+            {/* Line 2 */}
+            <span className="block mt-1 sm:mt-1.5 md:mt-2">
+              Innovate <span className="text-brand-magenta">Beyond Expectations.</span>
+            </span>
+            
+            {/* Line 3 */}
+            <span className="block mt-1 sm:mt-1.5 md:mt-2">
+              <span className="inline-flex items-center justify-center gap-x-2 sm:gap-x-3 whitespace-nowrap">
+                <span>Dominate Your Digital</span>
+                <span className="relative inline-flex min-w-[110px] sm:min-w-[160px] md:min-w-[205px] lg:min-w-[235px] xl:min-w-[270px] text-left justify-start">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={headlineWords[wordIndex]}
+                      initial={{ opacity: 0, y: 16 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -16 }}
+                      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                      className="text-gradient-silver inline-block"
+                    >
+                      {headlineWords[wordIndex]}
+                    </motion.span>
+                  </AnimatePresence>
+                </span>
               </span>
             </span>
           </motion.h1>

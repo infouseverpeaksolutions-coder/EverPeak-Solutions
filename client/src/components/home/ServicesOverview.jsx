@@ -74,7 +74,7 @@ const ServicesOverview = () => {
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
             <span>Our Core Capabilities</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-heading text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
             Everything You Need To Grow Digitally
           </h2>
           <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
@@ -100,7 +100,7 @@ const ServicesOverview = () => {
                   <div>
                     {/* Top Number & Icon */}
                     <div className="flex items-center justify-between mb-5">
-                      <span className="font-mono text-xs font-bold text-brand-muted/70 tracking-widest">
+                      <span className="font-mono text-xs font-medium text-brand-muted/70 tracking-widest">
                         {svc.number}
                       </span>
                       <div className="w-10 h-10 rounded-lg bg-white/5 border border-brand-border group-hover:border-brand-magenta/40 group-hover:bg-brand-purple/10 transition-all flex items-center justify-center text-brand-violet group-hover:text-brand-magenta">
@@ -110,7 +110,7 @@ const ServicesOverview = () => {
 
                     {/* Content */}
                     <div className="space-y-2 mb-6">
-                      <h3 className="text-base sm:text-lg font-bold font-heading text-white group-hover:text-brand-offwhite transition-colors">
+                      <h3 className="text-base sm:text-lg font-medium font-heading text-white group-hover:text-brand-offwhite transition-colors">
                         {svc.title}
                       </h3>
                       <p className="text-brand-muted text-xs sm:text-sm leading-relaxed">
