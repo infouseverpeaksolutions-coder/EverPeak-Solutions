@@ -75,7 +75,7 @@ const Footer = () => {
 
           {/* Col 2: Navigation Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-white tracking-wider uppercase">Navigation</h4>
+            <h4 className="text-sm font-semibold font-heading text-white tracking-wider uppercase">Navigation</h4>
             <ul className="space-y-2.5 text-sm">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -94,7 +94,7 @@ const Footer = () => {
 
           {/* Col 3: Services */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-white tracking-wider uppercase">Services</h4>
+            <h4 className="text-sm font-semibold font-heading text-white tracking-wider uppercase">Services</h4>
             <ul className="space-y-2.5 text-sm">
               {services.map((service) => (
                 <li key={service}>
@@ -113,7 +113,7 @@ const Footer = () => {
 
           {/* Col 4: Contact & Office */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-white tracking-wider uppercase">Contact</h4>
+            <h4 className="text-sm font-semibold font-heading text-white tracking-wider uppercase">Contact</h4>
             <ul className="space-y-3.5 text-sm text-brand-muted">
               <li className="flex items-start space-x-3">
                 <Mail className="w-4 h-4 text-brand-violet shrink-0 mt-0.5" />

@@ -23,7 +23,7 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['Space Grotesk', 'sans-serif'],
+        heading: ['Poppins', 'sans-serif'],
         sans: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
