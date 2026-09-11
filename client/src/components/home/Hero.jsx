@@ -27,27 +27,27 @@ const Hero = () => {
     <section className="relative min-h-screen flex flex-col justify-center items-center pt-24 pb-10 sm:pt-28 sm:pb-14 overflow-hidden bg-brand-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto flex flex-col justify-center items-center">
         {/* Centered Hero Content */}
-        <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-5 md:space-y-6">
+        <div className="max-w-5xl mx-auto text-center space-y-5 sm:space-y-6">
           {/* Main Headline with Rotating Word Animation */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[46px] xl:text-[50px] font-extrabold font-heading text-white tracking-tight leading-[1.15]"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-[58px] xl:text-[66px] font-extrabold font-heading text-white tracking-tight leading-[1.12]"
           >
             Elevate Your <span className="text-gradient-purple">Vision Into Reality.</span>
             <br />
             Innovate <span className="text-brand-magenta">Beyond Expectations.</span>
             <br />
-            <span className="inline-flex flex-wrap items-center justify-center gap-x-2">
+            <span className="inline-flex flex-wrap items-center justify-center gap-x-2.5">
               <span>Dominate Your Digital</span>
-              <span className="relative inline-flex min-w-[120px] sm:min-w-[160px] md:min-w-[190px] text-left justify-start">
+              <span className="relative inline-flex min-w-[140px] sm:min-w-[190px] md:min-w-[240px] lg:min-w-[270px] text-left justify-start">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={headlineWords[wordIndex]}
-                    initial={{ opacity: 0, y: 14 }}
+                    initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -14 }}
+                    exit={{ opacity: 0, y: -16 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                     className="text-gradient-silver inline-block"
                   >
@@ -65,10 +65,10 @@ const Hero = () => {
             transition={{ duration: 0.65, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
             className="space-y-2 max-w-2xl mx-auto text-center"
           >
-            <p className="text-sm sm:text-base md:text-lg font-semibold text-brand-offwhite">
+            <p className="text-base sm:text-lg md:text-xl font-semibold text-brand-offwhite">
               Technology, creativity and digital marketing built around your business goals.
             </p>
-            <p className="text-brand-muted text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
+            <p className="text-brand-muted text-xs sm:text-sm md:text-[15px] leading-relaxed max-w-xl mx-auto">
               We build powerful digital experiences, scalable technology solutions and growth-driven marketing strategies that help businesses move forward.
             </p>
           </motion.div>
