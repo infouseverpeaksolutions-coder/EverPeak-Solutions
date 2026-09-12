@@ -96,14 +96,13 @@ CREATE DATABASE IF NOT EXISTS everpeak_solutions CHARACTER SET utf8mb4 COLLATE u
    DB_HOST=localhost
    DB_PORT=3306
    DB_USER=root
-   DB_PASSWORD=H@snain07
+   DB_PASSWORD=YOUR_MYSQL_PASSWORD
    DB_NAME=everpeak_solutions
 
-   # Note: Encode @ as %40 in DATABASE_URL if password contains @
-   DATABASE_URL="mysql://root:H%40snain07@localhost:3306/everpeak_solutions"
+   DATABASE_URL="mysql://root:YOUR_MYSQL_PASSWORD@localhost:3306/everpeak_solutions"
 
    # JWT Secret
-   JWT_SECRET=everpeak_solutions_super_secret_jwt_key_2026_elevate_innovate_dominate
+   JWT_SECRET=YOUR_JWT_SECRET_KEY
    JWT_EXPIRES_IN=7d
 
    # Email Configuration (Nodemailer)
@@ -152,13 +151,9 @@ CREATE DATABASE IF NOT EXISTS everpeak_solutions CHARACTER SET utf8mb4 COLLATE u
 
 ---
 
-## 🔐 Default Admin Credentials
+## 🔐 Admin Portal Access
 
-- **Admin Login URL**: `http://localhost:5173/admin/login`
-- **Email**: `admin@everpeaksolutions.in`
-- **Password**: `EverPeak@Admin2026!`
-
-*(Admins can manage portfolio projects, upload screenshots, feature items, review client leads, and change enquiry status).*
+The administrative panel is accessible at `/admin/login` for authorized operators to manage portfolio projects, upload case studies, review incoming client inquiries, and export leads. Credentials can be configured during database initialization via `prisma/seed.js` or managed via environment variables.
 
 ---
 
