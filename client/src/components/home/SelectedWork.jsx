@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink, Loader2, Sparkles, FolderKanban } from 'lucide-react';
 import { motion } from 'framer-motion';
 import api from '../../services/api';
+import SectionLabel from '../common/SectionLabel';
 
 const categories = [
   'ALL',
@@ -57,10 +58,7 @@ const SelectedWork = () => {
           className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4"
         >
           <div className="space-y-3 max-w-2xl">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
-              <Sparkles className="w-3 h-3" />
-              <span>Real Client Impact</span>
-            </div>
+            <SectionLabel label="Real Client Impact" centered={false} className="!justify-start mb-2" />
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
               Selected Work
             </h2>

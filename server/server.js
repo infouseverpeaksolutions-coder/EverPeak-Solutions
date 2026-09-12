@@ -77,9 +77,13 @@ app.get('/api/health', (req, res) => {
 const clientDistPath = path.join(__dirname, '../client/dist');
 app.use(express.static(clientDistPath));
 
+// Serve Standalone Vanilla SaaS Hero Showcase at /vanilla
+const vanillaRootPath = path.join(__dirname, '..');
+app.use('/vanilla', express.static(vanillaRootPath));
+
 // SPA Fallback for any client route (e.g. /about, /services, /portfolio, /contact, /admin)
 app.get('*', (req, res, next) => {
-  if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
+  if (req.path.startsWith('/api') || req.path.startsWith('/uploads') || req.path.startsWith('/vanilla')) {
     return next();
   }
   const indexPath = path.join(clientDistPath, 'index.html');

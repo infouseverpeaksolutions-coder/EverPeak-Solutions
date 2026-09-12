@@ -2,6 +2,7 @@ import React from 'react';
 import { Search, Share2, Target, PenTool, Sparkles, ArrowRight, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useModal } from '../../context/ModalContext';
+import SectionLabel from '../common/SectionLabel';
 
 const marketingServices = [
   {
@@ -98,9 +99,7 @@ const DigitalMarketingSection = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center max-w-2xl mx-auto mb-12 space-y-3"
         >
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
-            <span>Growth & Customer Acquisition</span>
-          </div>
+          <SectionLabel label="Growth & Customer Acquisition" />
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
             Turn Attention Into Growth
           </h2>

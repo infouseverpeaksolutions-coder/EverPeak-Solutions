@@ -50,17 +50,17 @@ const AdminLogin = () => {
 
       <div className="w-full max-w-md relative z-10">
         {/* Card */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-brand-dark-gray/90 border border-brand-border shadow-2xl backdrop-blur-xl space-y-6">
+        <div className="p-8 sm:p-10 rounded-3xl glass-panel-strong border border-brand-border shadow-2xl space-y-6">
           {/* Logo & Header */}
           <div className="text-center space-y-3">
-            <Link to="/" className="inline-block">
+            <Link to="/" className="inline-block outline-none">
               <img src="/logo.png" alt="EverPeak Solutions" className="h-10 w-auto mx-auto object-contain" />
             </Link>
-            <div className="flex items-center justify-center space-x-1.5 text-xs font-semibold uppercase tracking-wider text-brand-magenta">
+            <div className="flex items-center justify-center space-x-1.5 text-brand-magenta small-caps">
               <ShieldCheck className="w-4 h-4" />
               <span>Admin Management Portal</span>
             </div>
-            <h2 className="text-2xl font-semibold font-heading text-white">Sign In to Dashboard</h2>
+            <h2 className="text-2xl sm:text-3xl font-normal font-heading text-white">Sign In to Dashboard</h2>
           </div>
 
           {error && (

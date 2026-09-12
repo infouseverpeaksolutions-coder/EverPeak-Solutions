@@ -252,6 +252,110 @@ const exportEnquiriesCSV = async (req, res, next) => {
   }
 };
 
+// Admin: Export enquiries as real Excel .xlsx spreadsheet
+const exportEnquiriesXLSX = async (req, res, next) => {
+  try {
+    const ExcelJS = require('exceljs');
+    const { status, search } = req.query;
+
+    const where = {};
+    if (status && status.toUpperCase() !== 'ALL') {
+      where.status = status;
+    }
+
+    if (search) {
+      where.OR = [
+        { full_name: { contains: search } },
+        { email: { contains: search } },
+        { phone: { contains: search } },
+        { city: { contains: search } },
+        { company_name: { contains: search } },
+        { service: { contains: search } },
+      ];
+    }
+
+    const enquiries = await prisma.enquiry.findMany({
+      where,
+      orderBy: { created_at: 'desc' },
+    });
+
+    const workbook = new ExcelJS.Workbook();
+    workbook.creator = 'EverPeak Solutions';
+    workbook.created = new Date();
+
+    const sheet = workbook.addWorksheet('Leads', {
+      views: [{ state: 'frozen', ySplit: 1 }],
+    });
+
+    sheet.columns = [
+      { header: 'Enquiry ID', key: 'id', width: 14 },
+      { header: 'Date & Time (IST)', key: 'date', width: 22 },
+      { header: 'Full Name', key: 'full_name', width: 26 },
+      { header: 'Email Address', key: 'email', width: 30 },
+      { header: 'Phone / WhatsApp', key: 'phone', width: 20 },
+      { header: 'City / Location', key: 'city', width: 18 },
+      { header: 'Company Name', key: 'company_name', width: 24 },
+      { header: 'Service Requested', key: 'service', width: 26 },
+      { header: 'Estimated Budget', key: 'budget', width: 18 },
+      { header: 'Status', key: 'status', width: 16 },
+      { header: 'Project Details / Message', key: 'project_details', width: 45 },
+    ];
+
+    // Bold header row + subtle background fill
+    const headerRow = sheet.getRow(1);
+    headerRow.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+    headerRow.fill = {
+      type: 'pattern',
+      pattern: 'solid',
+      fgColor: { argb: 'FF121216' },
+    };
+    headerRow.height = 28;
+    headerRow.alignment = { vertical: 'middle' };
+
+    // Auto-filter across all columns
+    sheet.autoFilter = 'A1:K1';
+
+    // Add rows
+    enquiries.forEach((item) => {
+      const dateStr = new Date(item.created_at).toLocaleString('en-IN', {
+        timeZone: 'Asia/Kolkata',
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      });
+
+      const row = sheet.addRow({
+        id: item.id,
+        date: dateStr,
+        full_name: item.full_name,
+        email: item.email,
+        phone: item.phone,
+        city: item.city || 'N/A',
+        company_name: item.company_name || 'N/A',
+        service: item.service,
+        budget: item.budget || 'N/A',
+        status: item.status,
+        project_details: item.project_details,
+      });
+
+      row.alignment = { vertical: 'middle', wrapText: false };
+      row.height = 22;
+    });
+
+    const filename = `EverPeak_Enquiries_${new Date().toISOString().slice(0, 10)}.xlsx`;
+
+    res.setHeader(
+      'Content-Type',
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    );
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+
+    await workbook.xlsx.write(res);
+    res.end();
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   submitEnquiry,
   getAdminEnquiries,
@@ -259,4 +363,5 @@ module.exports = {
   updateEnquiryStatus,
   deleteEnquiry,
   exportEnquiriesCSV,
+  exportEnquiriesXLSX,
 };

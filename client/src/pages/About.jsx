@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Target, Compass, Eye, Shield, Users, Sparkles, ArrowRight } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
 import CTASection from '../components/home/CTASection';
+import SectionLabel from '../components/common/SectionLabel';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -124,9 +125,8 @@ const About = () => {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-4xl mx-auto space-y-6 text-center"
           >
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest mx-auto">
-              <Compass className="w-3.5 h-3.5" />
-              <span>About EverPeak Solutions</span>
+            <div className="flex justify-center">
+              <SectionLabel label="About EverPeak Solutions" />
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-semibold font-heading text-white tracking-tight leading-[1.18] max-w-4xl mx-auto">
@@ -157,7 +157,7 @@ const About = () => {
             viewport={{ once: true, margin: '-40px' }}
             className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
           >
-            <motion.div variants={itemVariants} className="p-6 rounded-2xl bg-brand-dark-gray/50 border border-brand-border text-center">
+            <motion.div variants={itemVariants} className="p-6 rounded-2xl glass-panel text-center">
               <div className="text-3xl sm:text-4xl font-semibold font-heading text-gradient-purple">
                 6+
               </div>
@@ -165,7 +165,7 @@ const About = () => {
               <p className="text-[11px] text-brand-muted mt-0.5">Delivering verified digital solutions</p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="p-6 rounded-2xl bg-brand-dark-gray/50 border border-brand-border text-center">
+            <motion.div variants={itemVariants} className="p-6 rounded-2xl glass-panel text-center">
               <div className="text-3xl sm:text-4xl font-semibold font-heading text-white">
                 600+
               </div>
@@ -173,7 +173,7 @@ const About = () => {
               <p className="text-[11px] text-brand-muted mt-0.5">Across 12+ diverse industries</p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="p-6 rounded-2xl bg-brand-dark-gray/50 border border-brand-border text-center">
+            <motion.div variants={itemVariants} className="p-6 rounded-2xl glass-panel text-center">
               <div className="text-3xl sm:text-4xl font-semibold font-heading text-gradient-purple">
                 350+
               </div>
@@ -181,7 +181,7 @@ const About = () => {
               <p className="text-[11px] text-brand-muted mt-0.5">Startups to established enterprises</p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="p-6 rounded-2xl bg-brand-dark-gray/50 border border-brand-border text-center">
+            <motion.div variants={itemVariants} className="p-6 rounded-2xl glass-panel text-center">
               <div className="text-3xl sm:text-4xl font-semibold font-heading text-white">
                 98%
               </div>
@@ -202,7 +202,7 @@ const About = () => {
             viewport={{ once: true, margin: '-40px' }}
             className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
           >
-            <motion.div variants={itemVariants} className="p-8 sm:p-10 rounded-2xl bg-brand-dark-gray/60 border border-brand-border space-y-4 text-center flex flex-col items-center">
+            <motion.div variants={itemVariants} className="p-8 sm:p-10 rounded-2xl glass-panel hover:glass-panel-strong space-y-4 text-center flex flex-col items-center transition-all duration-300">
               <div className="w-12 h-12 rounded-xl bg-brand-purple/20 border border-brand-purple/40 flex items-center justify-center text-brand-magenta">
                 <Target className="w-6 h-6" />
               </div>
@@ -212,7 +212,7 @@ const About = () => {
               </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="p-8 sm:p-10 rounded-2xl bg-brand-dark-gray/60 border border-brand-border space-y-4 text-center flex flex-col items-center">
+            <motion.div variants={itemVariants} className="p-8 sm:p-10 rounded-2xl glass-panel hover:glass-panel-strong space-y-4 text-center flex flex-col items-center transition-all duration-300">
               <div className="w-12 h-12 rounded-xl bg-brand-magenta/20 border border-brand-magenta/40 flex items-center justify-center text-brand-magenta">
                 <Eye className="w-6 h-6" />
               </div>
@@ -233,9 +233,9 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="p-8 sm:p-12 rounded-2xl bg-gradient-card border border-brand-border space-y-5"
+            className="p-8 sm:p-12 rounded-3xl glass-panel-strong space-y-5"
           >
-            <span className="text-[11px] font-mono font-medium text-brand-magenta uppercase tracking-wider inline-block">
+            <span className="text-[11px] font-mono font-medium text-brand-magenta uppercase tracking-wider inline-block small-caps">
               Integrated Digital Ecosystem
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white">
@@ -247,7 +247,7 @@ const About = () => {
             <div className="pt-3 flex justify-center">
               <button
                 onClick={() => openEnquiryModal()}
-                className="btn-3d-matte-primary px-6 py-3 rounded-xl text-white font-semibold text-xs sm:text-sm tracking-wide flex items-center space-x-2 outline-none focus:outline-none"
+                className="btn-3d-matte-primary px-6 py-3 rounded-xl text-white font-semibold text-xs sm:text-sm tracking-wide flex items-center space-x-2 outline-none focus:outline-none small-caps"
               >
                 <span>Partner With Us</span>
                 <ArrowRight className="w-4 h-4" />
@@ -261,9 +261,9 @@ const About = () => {
       <section className="py-20 bg-brand-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-            <span className="text-[11px] font-semibold text-brand-purple uppercase tracking-widest">
-              Guiding Principles
-            </span>
+            <div className="flex justify-center">
+              <SectionLabel label="Guiding Principles" />
+            </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white">
               Our Core Values
             </h2>
@@ -282,9 +282,9 @@ const About = () => {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="p-6 rounded-xl bg-brand-dark-gray/50 border border-brand-border space-y-3 hover:border-brand-purple/40 transition-colors"
+                  className="p-6 rounded-2xl glass-panel hover:glass-panel-strong space-y-3 transition-all duration-300"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-brand-border flex items-center justify-center text-brand-violet">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-brand-border flex items-center justify-center text-brand-violet">
                     <Icon className="w-5 h-5" />
                   </div>
                   <h4 className="text-base font-medium font-heading text-white">{val.title}</h4>
@@ -300,9 +300,9 @@ const About = () => {
       <section className="py-20 bg-brand-near-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-            <span className="text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
-              Multidisciplinary Talent
-            </span>
+            <div className="flex justify-center">
+              <SectionLabel label="Multidisciplinary Talent" />
+            </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white">
               Meet Our Specialist Teams
             </h2>
@@ -319,7 +319,7 @@ const About = () => {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="p-6 rounded-xl bg-brand-dark-gray/60 border border-brand-border space-y-2 hover:border-white/20 transition-colors"
+                className="p-6 rounded-2xl glass-panel hover:glass-panel-strong space-y-2 transition-all duration-300"
               >
                 <h4 className="text-base font-medium text-white font-heading">{role.role}</h4>
                 <p className="text-xs text-brand-muted leading-relaxed">{role.desc}</p>

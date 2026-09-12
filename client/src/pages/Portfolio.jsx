@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Search, Loader2, ExternalLink, ArrowRight, FolderKanban, Sparkles } from 'lucide-react';
 import api from '../services/api';
 import CTASection from '../components/home/CTASection';
+import SectionLabel from '../components/common/SectionLabel';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -107,9 +108,8 @@ const Portfolio = () => {
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto"
         >
           <div className="text-center max-w-5xl mx-auto mb-10 sm:mb-12 space-y-4">
-            <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>OUR PORTFOLIO · Selected Work · Digital Experiences · Real Results</span>
+            <motion.div variants={itemVariants} className="flex justify-center">
+              <SectionLabel label="Selected Work · Digital Experiences" />
             </motion.div>
 
             <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] font-semibold font-heading text-white tracking-tight leading-[1.18]">
@@ -198,7 +198,7 @@ const Portfolio = () => {
                   <motion.div
                     variants={itemVariants}
                     key={project.id}
-                    className="group rounded-xl bg-brand-dark-gray/70 border border-brand-border overflow-hidden hover:border-brand-purple/40 hover:bg-brand-card-hover transition-all duration-300 flex flex-col justify-between"
+                    className="group rounded-2xl glass-panel hover:glass-panel-strong overflow-hidden transition-all duration-300 flex flex-col justify-between"
                   >
                     <div>
                       {/* Image Preview */}
@@ -211,7 +211,7 @@ const Portfolio = () => {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark-gray via-transparent to-transparent opacity-80" />
 
-                        <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-brand-black/80 backdrop-blur-md border border-white/10 text-[10px] font-semibold text-brand-magenta uppercase tracking-wider">
+                        <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-brand-black/80 backdrop-blur-md border border-white/10 text-[10px] font-semibold text-brand-magenta uppercase small-caps tracking-wider">
                           {project.category}
                         </span>
                       </Link>
@@ -253,7 +253,7 @@ const Portfolio = () => {
                     <div className="px-5 pb-5 pt-2 flex items-center justify-between border-t border-white/5 mt-3">
                       <Link
                         to={`/portfolio/${project.slug}`}
-                        className="inline-flex items-center space-x-1 text-[11px] font-semibold tracking-wider text-brand-offwhite group-hover:text-brand-magenta uppercase transition-colors"
+                        className="inline-flex items-center space-x-1 text-[11px] font-semibold tracking-wider text-brand-offwhite group-hover:text-brand-magenta uppercase small-caps transition-colors"
                       >
                         <span>Case Study Details</span>
                         <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />

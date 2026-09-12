@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowRight, MessageSquare, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useModal } from '../../context/ModalContext';
+import SectionLabel from '../common/SectionLabel';
 
 const CTASection = () => {
   const { openEnquiryModal } = useModal();
@@ -26,10 +27,7 @@ const CTASection = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="p-6 sm:p-10 rounded-2xl bg-brand-dark-gray/80 border border-brand-border shadow-2xl backdrop-blur-xl space-y-6"
         >
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Ready To Scale?</span>
-          </div>
+          <SectionLabel label="Ready To Scale?" />
 
           <div className="space-y-3 max-w-2xl mx-auto">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight leading-tight">

@@ -38,24 +38,27 @@ const AdminDashboard = () => {
     fetchStats();
   }, []);
 
-  const handleExportCSV = async () => {
+  const handleExportXLSX = async () => {
     setExporting(true);
     try {
-      const response = await api.get('/enquiries/export/csv', {
+      const response = await api.get('/enquiries/export/xlsx', {
         responseType: 'blob',
       });
 
-      const url = window.URL.createObjectURL(new Blob([response.data], { type: 'text/csv;charset=utf-8;' }));
+      const blob = new Blob([response.data], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      });
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
       const dateStr = new Date().toISOString().slice(0, 10);
-      link.setAttribute('download', `EverPeak_Enquiries_${dateStr}.csv`);
+      link.setAttribute('download', `EverPeak_Enquiries_${dateStr}.xlsx`);
       document.body.appendChild(link);
       link.click();
       link.parentNode.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (err) {
-      console.error('Failed to export CSV:', err);
+      console.error('Failed to export Excel:', err);
       alert('Failed to export enquiries. Please try again.');
     } finally {
       setExporting(false);
@@ -141,10 +144,10 @@ const AdminDashboard = () => {
           return (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-brand-dark-gray/80 border border-brand-border space-y-4 hover:border-brand-purple/40 transition-colors"
+              className="glass-panel-strong p-6 rounded-2xl space-y-4 hover:border-brand-purple/40 transition-colors"
             >
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-brand-muted uppercase tracking-wider">
+                <span className="text-xs font-semibold text-brand-muted uppercase tracking-wider small-caps">
                   {card.title}
                 </span>
                 <div className="w-10 h-10 rounded-xl bg-white/5 border border-brand-border flex items-center justify-center text-brand-magenta">
@@ -162,7 +165,7 @@ const AdminDashboard = () => {
       </div>
 
       {/* Recent Enquiries Table Card */}
-      <div className="rounded-2xl bg-brand-dark-gray/80 border border-brand-border overflow-hidden">
+      <div className="glass-panel-strong rounded-2xl overflow-hidden">
         <div className="p-6 border-b border-brand-border flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-lg font-medium font-heading text-white">Recent Website Enquiries</h2>
@@ -170,21 +173,21 @@ const AdminDashboard = () => {
           </div>
           <div className="flex items-center space-x-3 shrink-0">
             <button
-              onClick={handleExportCSV}
+              onClick={handleExportXLSX}
               disabled={exporting}
-              className="btn-3d-matte-mini inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold text-brand-offwhite hover:text-white uppercase tracking-wider"
-              title="Download enquiries spreadsheet (.CSV / Excel / Google Sheets)"
+              className="btn-3d-matte-mini inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-[11px] font-semibold text-brand-offwhite hover:text-white uppercase tracking-wider small-caps"
+              title="Download enquiries spreadsheet (.XLSX Excel)"
             >
               {exporting ? (
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
               ) : (
                 <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-400" />
               )}
-              <span>{exporting ? 'Exporting...' : 'Export Excel'}</span>
+              <span>{exporting ? 'Exporting...' : 'Export Excel (.xlsx)'}</span>
             </button>
             <Link
               to="/admin/enquiries"
-              className="btn-3d-matte-mini inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg text-[11px] font-semibold text-brand-magenta hover:text-white uppercase tracking-wider"
+              className="btn-3d-matte-mini inline-flex items-center space-x-1 px-3.5 py-2 rounded-xl text-[11px] font-semibold text-brand-magenta hover:text-white uppercase tracking-wider small-caps"
             >
               <span>View All</span>
               <ArrowUpRight className="w-3.5 h-3.5" />

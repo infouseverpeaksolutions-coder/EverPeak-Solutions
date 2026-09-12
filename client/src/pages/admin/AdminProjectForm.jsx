@@ -51,6 +51,16 @@ const AdminProjectForm = () => {
   const [loading, setLoading] = useState(false);
   const [initialFetchLoading, setInitialFetchLoading] = useState(isEdit);
   const [error, setError] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [toast, setToast] = useState(null);
+
+  useEffect(() => {
+    if (toast) {
+      const timer = setTimeout(() => setToast(null), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [toast]);
 
   // Auto-slugify helper
   const slugify = (text) =>
@@ -147,6 +157,41 @@ const AdminProjectForm = () => {
     });
   };
 
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      const files = Array.from(e.dataTransfer.files).filter((file) =>
+        file.type.startsWith('image/')
+      );
+      if (files.length === 0) {
+        setToast({ type: 'error', message: 'Please drop valid image files (PNG, JPG, WEBP, SVG).' });
+        return;
+      }
+      setNewFiles((prev) => [...prev, ...files]);
+      const newPreviews = files.map((file) => ({
+        name: file.name,
+        url: URL.createObjectURL(file),
+        size: (file.size / 1024 / 1024).toFixed(2),
+      }));
+      setNewFilePreviews((prev) => [...prev, ...newPreviews]);
+    }
+  };
+
   const removeExistingImage = (imageId) => {
     setDeletedImageIds((prev) => [...prev, imageId]);
     setExistingImages((prev) => prev.filter((img) => img.id !== imageId));
@@ -156,12 +201,15 @@ const AdminProjectForm = () => {
     e.preventDefault();
 
     if (!formData.title.trim() || !formData.category.trim() || !formData.short_description.trim() || !formData.description.trim()) {
-      setError('Please fill in all required fields (Title, Category, Short Description, Full Description).');
+      const msg = 'Please fill in all required fields (Title, Category, Short Description, Full Description).';
+      setError(msg);
+      setToast({ type: 'error', message: msg });
       return;
     }
 
     setLoading(true);
     setError(null);
+    setUploadProgress(0);
 
     try {
       const payload = new FormData();
@@ -194,26 +242,38 @@ const AdminProjectForm = () => {
         payload.append('images', file);
       });
 
+      const axiosConfig = {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        onUploadProgress: (progressEvent) => {
+          if (progressEvent.total) {
+            const percent = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+            setUploadProgress(percent);
+          }
+        },
+      };
+
       if (isEdit) {
         deletedImageIds.forEach((delId) => {
           payload.append('deleted_image_ids', delId);
         });
 
-        await api.put(`/portfolio/${id}`, payload, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        });
+        await api.put(`/portfolio/${id}`, payload, axiosConfig);
       } else {
-        await api.post('/portfolio', payload, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        });
+        await api.post('/portfolio', payload, axiosConfig);
       }
 
-      navigate('/admin/portfolio');
+      setToast({
+        type: 'success',
+        message: isEdit ? 'Project updated successfully!' : 'Project created successfully!',
+      });
+      setTimeout(() => {
+        navigate('/admin/portfolio');
+      }, 1000);
     } catch (err) {
       console.error('Failed to save project:', err);
-      setError(
-        err.response?.data?.message || 'Failed to save project. Please verify inputs and try again.'
-      );
+      const msg = err.response?.data?.message || 'Failed to save project. Please verify inputs and try again.';
+      setError(msg);
+      setToast({ type: 'error', message: msg });
     } finally {
       setLoading(false);
     }
@@ -263,14 +323,14 @@ const AdminProjectForm = () => {
 
       {/* Form Card */}
       <form onSubmit={handleSubmit} className="space-y-8">
-        <div className="p-8 rounded-3xl bg-brand-dark-gray/80 border border-brand-border space-y-6">
+        <div className="glass-panel-strong p-8 rounded-3xl space-y-6">
           <h2 className="text-lg font-medium font-heading text-white pb-3 border-b border-white/5">
             Core Information
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="sm:col-span-2">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5 small-caps">
                 Project Title <span className="text-brand-magenta">*</span>
               </label>
               <input
@@ -285,7 +345,7 @@ const AdminProjectForm = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5 small-caps">
                 URL Slug <span className="text-brand-magenta">*</span>
               </label>
               <input
@@ -300,7 +360,7 @@ const AdminProjectForm = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5 small-caps">
                 Category <span className="text-brand-magenta">*</span>
               </label>
               <select
@@ -318,7 +378,7 @@ const AdminProjectForm = () => {
             </div>
 
             <div className="sm:col-span-2">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5 small-caps">
                 Short Description (Card Summary) <span className="text-brand-magenta">*</span>
               </label>
               <textarea
@@ -333,7 +393,7 @@ const AdminProjectForm = () => {
             </div>
 
             <div className="sm:col-span-2">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5 small-caps">
                 Full Project Overview <span className="text-brand-magenta">*</span>
               </label>
               <textarea
@@ -350,14 +410,14 @@ const AdminProjectForm = () => {
         </div>
 
         {/* Case Study Details */}
-        <div className="p-8 rounded-3xl bg-brand-dark-gray/80 border border-brand-border space-y-6">
+        <div className="glass-panel-strong p-8 rounded-3xl space-y-6">
           <h2 className="text-lg font-medium font-heading text-white pb-3 border-b border-white/5">
             Case Study Depth & Tech Stack
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5 small-caps">
                 The Challenge Faced
               </label>
               <textarea
@@ -371,7 +431,7 @@ const AdminProjectForm = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5 small-caps">
                 The Solution Delivered
               </label>
               <textarea
@@ -385,7 +445,7 @@ const AdminProjectForm = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5 small-caps">
                 Services Provided (Comma separated)
               </label>
               <input
@@ -399,7 +459,7 @@ const AdminProjectForm = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5 small-caps">
                 Technologies Used (Comma separated)
               </label>
               <input
@@ -413,7 +473,7 @@ const AdminProjectForm = () => {
             </div>
 
             <div className="sm:col-span-2">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-brand-offwhite mb-1.5 small-caps">
                 Live Project URL (Optional)
               </label>
               <input
@@ -429,13 +489,22 @@ const AdminProjectForm = () => {
         </div>
 
         {/* Media & Image Uploads */}
-        <div className="p-8 rounded-3xl bg-brand-dark-gray/80 border border-brand-border space-y-6">
+        <div className="glass-panel-strong p-8 rounded-3xl space-y-6">
           <h2 className="text-lg font-medium font-heading text-white pb-3 border-b border-white/5">
             Project Images & Screenshots
           </h2>
 
           {/* Upload Drop Area */}
-          <div className="border-2 border-dashed border-brand-border hover:border-brand-purple/50 rounded-2xl p-8 text-center bg-brand-black/40 transition-colors">
+          <div
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            onDrop={handleDrop}
+            className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all ${
+              isDragging
+                ? 'border-brand-magenta bg-brand-purple/15 shadow-glow-sm scale-[1.01]'
+                : 'border-brand-border hover:border-brand-purple/50 bg-brand-black/40'
+            }`}
+          >
             <input
               type="file"
               id="file-upload"
@@ -448,17 +517,36 @@ const AdminProjectForm = () => {
               htmlFor="file-upload"
               className="cursor-pointer flex flex-col items-center justify-center space-y-3"
             >
-              <div className="w-12 h-12 rounded-full bg-brand-purple/20 border border-brand-purple/40 flex items-center justify-center text-brand-magenta">
+              <div className="w-12 h-12 rounded-full bg-brand-purple/20 border border-brand-purple/40 flex items-center justify-center text-brand-magenta transition-transform group-hover:scale-110">
                 <Upload className="w-6 h-6" />
               </div>
-              <div className="text-sm font-semibold text-white">
-                Click to upload project screenshots
+              <div className="text-xs font-semibold text-white small-caps tracking-wider">
+                Drag & Drop or Click to Upload — up to 10 images
               </div>
-              <p className="text-xs text-brand-muted">
+              <p className="text-[11px] text-brand-muted font-mono">
                 PNG, JPG, WEBP or SVG up to 10MB each (First image is main thumbnail)
               </p>
             </label>
           </div>
+
+          {/* Upload Progress Bar */}
+          {loading && uploadProgress > 0 && (
+            <div className="space-y-1.5 p-4 rounded-xl bg-brand-black/50 border border-brand-border">
+              <div className="flex justify-between text-xs font-mono text-brand-muted">
+                <span className="flex items-center gap-1.5">
+                  <Loader2 className="w-3.5 h-3.5 text-brand-magenta animate-spin" />
+                  Uploading project assets...
+                </span>
+                <span className="text-brand-magenta font-bold">{uploadProgress}%</span>
+              </div>
+              <div className="w-full h-1.5 rounded-full bg-white/5 overflow-hidden">
+                <div
+                  className="h-full bg-gradient-everpeak transition-all duration-300"
+                  style={{ width: `${uploadProgress}%` }}
+                />
+              </div>
+            </div>
+          )}
 
           {/* Existing Images (Edit mode) */}
           {existingImages.length > 0 && (
@@ -523,7 +611,7 @@ const AdminProjectForm = () => {
         </div>
 
         {/* Status & Options */}
-        <div className="p-8 rounded-3xl bg-brand-dark-gray/80 border border-brand-border space-y-6">
+        <div className="glass-panel-strong p-8 rounded-3xl space-y-6">
           <h2 className="text-lg font-medium font-heading text-white pb-3 border-b border-white/5">
             Publishing Options
           </h2>
@@ -587,6 +675,33 @@ const AdminProjectForm = () => {
           </button>
         </div>
       </form>
+
+      {/* Non-blocking Glass Toast */}
+      {toast && (
+        <div className="fixed bottom-6 right-6 z-50 max-w-md animate-fadeIn">
+          <div
+            className={`glass-panel-strong px-5 py-3.5 rounded-2xl flex items-center space-x-3 border shadow-2xl ${
+              toast.type === 'success'
+                ? 'border-green-500/40 text-green-300'
+                : 'border-red-500/40 text-red-300'
+            }`}
+          >
+            {toast.type === 'success' ? (
+              <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0" />
+            ) : (
+              <AlertCircle className="w-5 h-5 text-red-400 shrink-0" />
+            )}
+            <p className="text-xs font-medium text-white">{toast.message}</p>
+            <button
+              type="button"
+              onClick={() => setToast(null)}
+              className="ml-auto p-1 text-brand-muted hover:text-white"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

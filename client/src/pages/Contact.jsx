@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, MessageSquare, Send, CheckCircle2, AlertCircle, Loader2, Sparkles, Clock, ShieldCheck } from 'lucide-react';
 import api from '../services/api';
+import SectionLabel from '../components/common/SectionLabel';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -147,9 +148,8 @@ const Contact = () => {
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
         >
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <motion.div variants={itemVariants} className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Direct Collaboration</span>
+            <motion.div variants={itemVariants} className="flex justify-center">
+              <SectionLabel label="Direct Collaboration" />
             </motion.div>
 
             <motion.h1 variants={itemVariants} className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-semibold font-heading text-white tracking-tight">
@@ -175,7 +175,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
             {/* Left Column: Direct Contact Info (5 cols) */}
             <motion.div variants={itemVariants} className="lg:col-span-5 space-y-5">
-              <div className="p-6 sm:p-7 rounded-2xl bg-brand-dark-gray/80 border border-brand-border space-y-5 shadow-xl">
+              <div className="p-6 sm:p-7 rounded-3xl glass-panel-strong space-y-5 shadow-xl">
                 <h3 className="text-lg font-medium font-heading text-white pb-3 border-b border-white/5">
                   Contact Details
                 </h3>
@@ -249,7 +249,7 @@ const Contact = () => {
               </div>
 
               {/* Response Guarantee Badge */}
-              <div className="p-5 rounded-xl bg-brand-dark-gray/40 border border-brand-border space-y-2">
+              <div className="p-5 rounded-2xl glass-panel space-y-2">
                 <div className="flex items-center space-x-2 text-xs font-semibold text-brand-offwhite">
                   <Clock className="w-4 h-4 text-brand-purple" />
                   <span>24-Hour Fast Response Guarantee</span>
@@ -262,7 +262,7 @@ const Contact = () => {
 
             {/* Right Column: Contact & Enquiry Form (7 cols) */}
             <motion.div variants={itemVariants} className="lg:col-span-7">
-              <div className="p-6 sm:p-8 rounded-2xl bg-brand-dark-gray/80 border border-brand-border shadow-2xl backdrop-blur-xl">
+              <div className="p-6 sm:p-8 rounded-3xl glass-panel-strong shadow-2xl">
                 {status.success ? (
                   <div className="py-10 text-center space-y-4">
                     <div className="w-14 h-14 mx-auto rounded-full bg-brand-purple/20 border border-brand-magenta/40 flex items-center justify-center text-brand-magenta">

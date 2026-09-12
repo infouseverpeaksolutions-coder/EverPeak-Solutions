@@ -62,23 +62,25 @@ const AdminEnquiries = () => {
       if (selectedStatus !== 'ALL') params.status = selectedStatus;
       if (search.trim()) params.search = search.trim();
 
-      const response = await api.get('/enquiries/export/csv', {
+      const response = await api.get('/enquiries/export/xlsx', {
         params,
         responseType: 'blob',
       });
 
-      const url = window.URL.createObjectURL(new Blob([response.data], { type: 'text/csv;charset=utf-8;' }));
+      const blob = new Blob([response.data], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      });
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
       const dateStr = new Date().toISOString().slice(0, 10);
-      link.setAttribute('download', `EverPeak_Enquiries_${dateStr}.csv`);
+      link.setAttribute('download', `EverPeak_Enquiries_${dateStr}.xlsx`);
       document.body.appendChild(link);
       link.click();
       link.parentNode.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (err) {
-      console.error('Failed to export CSV:', err);
-      alert('Failed to export enquiries. Please try again.');
+      console.error('Failed to export Excel file:', err);
     } finally {
       setExporting(false);
     }

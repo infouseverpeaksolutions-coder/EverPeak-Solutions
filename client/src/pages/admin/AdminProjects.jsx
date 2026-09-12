@@ -126,13 +126,13 @@ const AdminProjects = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-brand-dark-gray/60 p-4 rounded-2xl border border-brand-border">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 glass-panel p-4 rounded-2xl">
         <div className="flex items-center space-x-2.5 overflow-x-auto w-full md:w-auto no-scrollbar pb-1 md:pb-0">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3.5 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider whitespace-nowrap ${
+              className={`px-3.5 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider small-caps whitespace-nowrap ${
                 selectedCategory === cat
                   ? 'btn-3d-matte-primary text-white'
                   : 'btn-3d-matte-secondary text-brand-muted hover:text-white'
@@ -156,7 +156,7 @@ const AdminProjects = () => {
       </div>
 
       {/* Projects Table */}
-      <div className="rounded-2xl bg-brand-dark-gray/80 border border-brand-border overflow-hidden">
+      <div className="glass-panel-strong rounded-2xl overflow-hidden">
         {loading ? (
           <div className="py-24 flex flex-col items-center justify-center space-y-3 text-brand-muted">
             <Loader2 className="w-8 h-8 text-brand-magenta animate-spin" />

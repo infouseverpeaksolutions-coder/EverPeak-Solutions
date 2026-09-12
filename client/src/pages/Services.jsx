@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { useModal } from '../context/ModalContext';
 import CTASection from '../components/home/CTASection';
+import SectionLabel from '../components/common/SectionLabel';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -263,9 +264,8 @@ const Services = () => {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="text-center max-w-5xl mx-auto space-y-5"
           >
-            <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-magenta uppercase tracking-widest">
-              <Layers className="w-3.5 h-3.5" />
-              <span>Full-Stack Capabilities</span>
+            <div className="flex justify-center">
+              <SectionLabel label="Full-Stack Capabilities" />
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-semibold font-heading text-white tracking-tight leading-[1.16]">
@@ -340,10 +340,10 @@ const Services = () => {
                   <motion.div
                     key={idx}
                     variants={itemVariants}
-                    className="p-6 rounded-xl bg-brand-dark-gray/70 border border-brand-border hover:border-brand-purple/40 hover:bg-brand-card-hover transition-colors duration-300 flex flex-col justify-between group"
+                    className="p-7 rounded-2xl glass-panel hover:glass-panel-strong transition-all duration-300 flex flex-col justify-between group"
                   >
                     <div>
-                      <div className="w-10 h-10 rounded-lg bg-white/5 border border-brand-border group-hover:border-brand-purple/40 group-hover:bg-brand-purple/15 transition-all flex items-center justify-center text-brand-violet mb-5">
+                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-brand-border group-hover:border-brand-purple/40 group-hover:bg-brand-purple/15 transition-all flex items-center justify-center text-brand-violet mb-5">
                         <Icon className="w-5 h-5" />
                       </div>
 
@@ -356,7 +356,7 @@ const Services = () => {
                       </p>
 
                       <div className="space-y-1.5 mb-6">
-                        <span className="text-[10px] font-mono font-medium text-white/50 uppercase tracking-wider block mb-1.5">
+                        <span className="text-[10px] font-mono font-medium text-white/50 uppercase tracking-wider block mb-1.5 small-caps">
                           Key Deliverables:
                         </span>
                         {svc.deliverables.map((item, dIdx) => (
@@ -371,7 +371,7 @@ const Services = () => {
                     <div className="pt-3 border-t border-white/5">
                       <button
                         onClick={() => openEnquiryModal(svc.title)}
-                        className="btn-3d-matte-primary w-full py-2.5 px-4 rounded-lg text-white text-[11px] font-semibold uppercase tracking-wider flex items-center justify-center space-x-1.5 outline-none focus:outline-none"
+                        className="btn-3d-matte-primary w-full py-2.5 px-4 rounded-xl text-white text-[11px] font-semibold uppercase tracking-wider small-caps flex items-center justify-center space-x-1.5 outline-none focus:outline-none"
                       >
                         <span>DISCUSS YOUR PROJECT</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -409,10 +409,10 @@ const Services = () => {
                   <motion.div
                     key={idx}
                     variants={itemVariants}
-                    className="p-6 rounded-xl bg-brand-dark-gray/70 border border-brand-border hover:border-brand-magenta/40 hover:bg-brand-card-hover transition-colors duration-300 flex flex-col justify-between group"
+                    className="p-7 rounded-2xl glass-panel hover:glass-panel-strong transition-all duration-300 flex flex-col justify-between group"
                   >
                     <div>
-                      <div className="w-10 h-10 rounded-lg bg-white/5 border border-brand-border group-hover:border-brand-magenta/40 group-hover:bg-brand-purple/15 transition-all flex items-center justify-center text-brand-magenta mb-5">
+                      <div className="w-10 h-10 rounded-xl bg-white/5 border border-brand-border group-hover:border-brand-magenta/40 group-hover:bg-brand-purple/15 transition-all flex items-center justify-center text-brand-magenta mb-5">
                         <Icon className="w-5 h-5" />
                       </div>
 
@@ -425,7 +425,7 @@ const Services = () => {
                       </p>
 
                       <div className="space-y-1.5 mb-6">
-                        <span className="text-[10px] font-mono font-bold text-white/50 uppercase tracking-wider block mb-1.5">
+                        <span className="text-[10px] font-mono font-bold text-white/50 uppercase tracking-wider block mb-1.5 small-caps">
                           Key Deliverables:
                         </span>
                         {svc.deliverables.map((item, dIdx) => (
@@ -440,7 +440,7 @@ const Services = () => {
                     <div className="pt-3 border-t border-white/5">
                       <button
                         onClick={() => openEnquiryModal(svc.title)}
-                        className="btn-3d-matte-primary w-full py-2.5 px-4 rounded-lg text-white text-[11px] font-semibold uppercase tracking-wider flex items-center justify-center space-x-1.5 outline-none focus:outline-none"
+                        className="btn-3d-matte-primary w-full py-2.5 px-4 rounded-xl text-white text-[11px] font-semibold uppercase tracking-wider small-caps flex items-center justify-center space-x-1.5 outline-none focus:outline-none"
                       >
                         <span>DISCUSS YOUR PROJECT</span>
                         <ArrowRight className="w-3.5 h-3.5" />

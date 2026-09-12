@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import SectionLabel from '../common/SectionLabel';
 
 const faqs = [
   {
@@ -63,10 +64,7 @@ const FAQSection = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-12 space-y-3"
         >
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-brand-border text-[11px] font-semibold text-brand-offwhite uppercase tracking-widest">
-            <HelpCircle className="w-3.5 h-3.5 text-brand-magenta" />
-            <span>Got Questions?</span>
-          </div>
+          <SectionLabel label="Frequently Asked Questions" />
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold font-heading text-white tracking-tight">
             Frequently Asked Questions
           </h2>
